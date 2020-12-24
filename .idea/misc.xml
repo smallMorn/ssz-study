@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/ssz-dependencies/pom.xml" />
+        <option value="$PROJECT_DIR$/ssz-parent/pom.xml" />
+        <option value="$PROJECT_DIR$/ssz-api-parent/pom.xml" />
+        <option value="$PROJECT_DIR$/ssz-service-parent/pom.xml" />
+        <option value="$PROJECT_DIR$/ssz-service-user/pom.xml" />
+        <option value="$PROJECT_DIR$/ssz-common-model/pom.xml" />
+        <option value="$PROJECT_DIR$/ssz-api-user/pom.xml" />
+        <option value="$PROJECT_DIR$/ssz-common-web/pom.xml" />
+        <option value="$PROJECT_DIR$/ssz-service-product/pom.xml" />
+        <option value="$PROJECT_DIR$/ssz-dependencies/ssz-common-model/pom.xml" />
+        <option value="$PROJECT_DIR$/ssz-dependencies/ssz-parent/ssz-api-parent/pom.xml" />
+        <option value="$PROJECT_DIR$/ssz-dependencies/ssz-parent/ssz-service-parent/pom.xml" />
+        <option value="$PROJECT_DIR$/ssz-dependencies/ssz-common-web/pom.xml" />
+        <option value="$PROJECT_DIR$/ssz-api/pom.xml" />
+      </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/ssz-dependencies/ssz-service-parent/pom.xml" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>

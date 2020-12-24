@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="ssz-api" />
+        <module name="ssz-common" />
+        <module name="ssz-service-user" />
+        <module name="ssz-service-product" />
+        <module name="ssz-model" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="8">
+      <module name="ssz-api" target="1.8" />
+      <module name="ssz-common" target="1.8" />
+      <module name="ssz-dependencies" target="1.8" />
+      <module name="ssz-model" target="1.8" />
+      <module name="ssz-parent" target="1.8" />
+      <module name="ssz-service-product" target="1.8" />
+      <module name="ssz-service-user" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
