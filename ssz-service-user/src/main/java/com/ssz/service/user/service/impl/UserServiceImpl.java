@@ -17,6 +17,7 @@ public class UserServiceImpl implements UserService {
     @Override
     @GlobalTransactional
     public Boolean insert(UserDTO dto) {
+        System.out.println();
         userMapper.insert(new User().setUserName(dto.getUserName())
                 .setUserSex(dto.getUserSex()).setUserAge(dto.getUserAge()));
         return true;
