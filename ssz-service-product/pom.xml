@@ -18,6 +18,7 @@
         <dependency>
             <groupId>tk.mybatis</groupId>
             <artifactId>mapper-spring-boot-starter</artifactId>
+            <version>2.1.5</version>
         </dependency>
 <!--        &lt;!&ndash;mysql JDBC驱动&ndash;&gt;-->
 <!--        <dependency>-->
