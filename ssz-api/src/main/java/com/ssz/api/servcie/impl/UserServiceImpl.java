@@ -18,6 +18,9 @@ public class UserServiceImpl implements UserService {
     @Override
     @GlobalTransactional
     public Boolean insert(UserDTO dto) {
+        System.out.println(
+
+        );
         userDao.insert(dto);
         productDao.deleteByProductId(dto.getProductId());
         return true;
