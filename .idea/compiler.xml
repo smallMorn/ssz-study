@@ -8,8 +8,8 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="ssz-api" />
-        <module name="ssz-common" />
         <module name="ssz-service-user" />
+        <module name="ssz-common" />
         <module name="ssz-service-product" />
         <module name="ssz-model" />
       </profile>
@@ -23,5 +23,14 @@
       <module name="ssz-service-product" target="1.8" />
       <module name="ssz-service-user" target="1.8" />
     </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="ssz-api" options="" />
+      <module name="ssz-common" options="" />
+      <module name="ssz-model" options="" />
+      <module name="ssz-service-product" options="" />
+      <module name="ssz-service-user" options="" />
+    </option>
   </component>
 </project>

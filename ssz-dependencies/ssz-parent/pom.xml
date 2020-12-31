@@ -33,11 +33,6 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
-        <!--alibaba数据库连接池-->
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>druid</artifactId>
-        </dependency>
         <!--验证注解-->
         <dependency>
             <groupId>org.hibernate.validator</groupId>
