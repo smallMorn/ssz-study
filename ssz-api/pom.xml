@@ -15,64 +15,12 @@
 	<name>Ssz Api</name>
 
 	<dependencies>
-		<dependency>
-			<groupId>com.alibaba.cloud</groupId>
-			<artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-			<exclusions>
-				<exclusion>
-					<artifactId>fastjson</artifactId>
-					<groupId>com.alibaba</groupId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>com.alibaba.cloud</groupId>
-			<artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>io.seata</groupId>
-			<artifactId>seata-spring-boot-starter</artifactId>
-			<exclusions>
-				<exclusion>
-					<artifactId>protobuf-java</artifactId>
-					<groupId>com.google.protobuf</groupId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>com.alibaba.cloud</groupId>
-			<artifactId>spring-cloud-starter-alibaba-seata</artifactId>
-			<version>2.2.1.RELEASE</version>
-			<exclusions>
-				<exclusion>
-					<groupId>io.seata</groupId>
-					<artifactId>seata-spring-boot-starter</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-openfeign-core</artifactId>
-		</dependency>
+
 	</dependencies>
 
 	<build>
 		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-				<executions>
-					<execution>
-						<goals>
-							<goal>repackage</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-			</plugin>
+
 		</plugins>
 	</build>
 

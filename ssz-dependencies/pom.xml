@@ -26,7 +26,6 @@
         <commons-pool2.version>2.7.0</commons-pool2.version>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <druid-spring-boot-starter.version>1.1.18</druid-spring-boot-starter.version>
         <guava.version>28.1-jre</guava.version>
         <hibernate-validator.version>6.0.17.Final</hibernate-validator.version>
         <java.version>1.8</java.version>
@@ -38,41 +37,71 @@
         <mysql.version>8.0.18</mysql.version>
 
         <slf4j.version>1.7.26</slf4j.version>
-        <spring-boot.version>2.1.7.RELEASE</spring-boot.version>
-        <spring-cloud.version>Greenwich.SR2</spring-cloud.version>
-        <spring-cloud-alibaba-nacos.version>2.1.0.RELEASE</spring-cloud-alibaba-nacos.version>
+        <spring-boot.version>2.2.1.RELEASE</spring-boot.version>
+        <alibaba.cloud.version>2.2.3.RELEASE</alibaba.cloud.version>
         <springfox.version>2.9.2</springfox.version>
     </properties>
 
 
     <dependencyManagement>
         <dependencies>
+            <!--feign-->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-openfeign</artifactId>
+                <version>${alibaba.cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
+            <!--alibaba数据库连接池-->
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid</artifactId>
-                <version>1.1.5</version>
+                <version>1.1.21</version>
             </dependency>
             <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>${spring-cloud.version}</version>
-                <scope>import</scope>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${alibaba.cloud.version}</version>
                 <type>pom</type>
+                <scope>import</scope>
             </dependency>
+            <!-- nacos 作为服务注册中心 -->
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-                <version>${spring-cloud-alibaba-nacos.version}</version>
+                <version>${alibaba.cloud.version}</version>
             </dependency>
+            <!-- nacos 作为服务注册中心 -->
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
-                <version>${spring-cloud-alibaba-nacos.version}</version>
+                <version>${alibaba.cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
+                <version>${alibaba.cloud.version}</version>
+            </dependency>
+            <!--seata start-->
+            <dependency>
+                <groupId>io.seata</groupId>
+                <artifactId>seata-spring-boot-starter</artifactId>
+                <version>1.4.0</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>com.alibaba</groupId>
+                        <artifactId>druid</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
-                <artifactId>spring-cloud-alibaba-seata</artifactId>
-                <version>2.2.0.RELEASE</version>
+                <artifactId>spring-cloud-starter-alibaba-seata</artifactId>
+                <version>${alibaba.cloud.version}</version>
                 <exclusions>
                     <exclusion>
                         <groupId>io.seata</groupId>
@@ -80,23 +109,7 @@
                     </exclusion>
                 </exclusions>
             </dependency>
-            <dependency>
-                <groupId>io.seata</groupId>
-                <artifactId>seata-spring-boot-starter</artifactId>
-                <version>1.2.0</version>
-            </dependency>
-            <dependency>
-                <groupId>com.alibaba</groupId>
-                <artifactId>druid-spring-boot-starter</artifactId>
-                <version>${druid-spring-boot-starter.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>${spring-boot.version}</version>
-                <scope>import</scope>
-                <type>pom</type>
-            </dependency>
+            <!--seata end-->
             <dependency>
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
@@ -152,11 +165,14 @@
                 <version>${commons-collections.version}</version>
             </dependency>
             <!-- apache end -->
+
+            <!--验证注解-->
             <dependency>
                 <groupId>org.hibernate.validator</groupId>
                 <artifactId>hibernate-validator</artifactId>
                 <version>${hibernate-validator.version}</version>
             </dependency>
+            <!--lombok-->
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
@@ -169,18 +185,6 @@
     <build>
         <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
             <plugins>
-                <plugin>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-maven-plugin</artifactId>
-                    <version>${spring-boot.version}</version>
-                    <executions>
-                        <execution>
-                            <goals>
-                                <goal>repackage</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
                 <plugin>
                     <groupId>org.mybatis.generator</groupId>
                     <artifactId>mybatis-generator-maven-plugin</artifactId>
