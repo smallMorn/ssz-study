@@ -1,0 +1,21 @@
+seata:
+  enabled: true
+  application-id: ssz-api
+  tx-service-group: ssz-api-group
+  config:
+    type: nacos
+    nacos:
+      namespace:
+      serverAddr: 192.168.237.129:8848
+      group: SEATA_GROUP
+      username: ""
+      password: ""
+  registry:
+    type: nacos
+    nacos:
+      application: seata-server
+      server-addr: 192.168.237.129:8848
+      group : "SEATA_GROUP"
+      namespace:
+      username: ""
+      password: ""

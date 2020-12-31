@@ -1,0 +1,29 @@
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.237.129:3306/ssz-service-user?autoReconnect=true&useSSL=false&serverTimezone=UTC&useAffectedRows=true
+    username: root
+    password: 123456
+seata:
+  enabled: true
+  enable-auto-data-source-proxy: true
+  application-id: ssz-service-user
+  tx-service-group: my_test_tx_group
+  config:
+    type: nacos
+    nacos:
+      namespace:
+      serverAddr: 192.168.237.129:8848
+      group: SEATA_GROUP
+      username: ""
+      password: ""
+  registry:
+    type: nacos
+    nacos:
+      application: seata-server
+      server-addr: 192.168.237.129:8848
+      group : "SEATA_GROUP"
+      namespace:
+      username: ""
+      password: ""

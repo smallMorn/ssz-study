@@ -35,7 +35,7 @@
         <mapper-spring-boot-starter.version>2.1.5</mapper-spring-boot-starter.version>
         <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
         <mybatis-generator.version>1.3.7</mybatis-generator.version>
-        <mysql.version>5.1.48</mysql.version>
+        <mysql.version>8.0.18</mysql.version>
 
         <slf4j.version>1.7.26</slf4j.version>
         <spring-boot.version>2.1.7.RELEASE</spring-boot.version>
@@ -106,7 +106,6 @@
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
                 <version>${mysql.version}</version>
-                <scope>runtime</scope>
             </dependency>
             <dependency>
                 <groupId>org.slf4j</groupId>

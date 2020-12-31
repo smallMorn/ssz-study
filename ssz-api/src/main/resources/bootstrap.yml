@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: ssz-api
+  main:
+    allow-bean-definition-overriding: true
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.237.129:8848
+        username: "nacos"
+        password: "nacos"
+      config:
+        server-addr: 192.168.237.129:8848
+        username: "nacos"
+        password: "nacos"
+server:
+  port: 1000
+feign:
+  sentinel:
+    enabled: true
