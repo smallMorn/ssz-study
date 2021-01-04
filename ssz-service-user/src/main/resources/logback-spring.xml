@@ -1,85 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <configuration>
 
+    <springProperty scope="context" name="log_file" source="logging.file"/>
+
     <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
 
-    <!-- 控制台 -->
-    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
-        <encoder>
-            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
-            <charset>UTF-8</charset>
-        </encoder>
-    </appender>
-
-    <!-- 时间滚动输出 level为 DEBUG 日志 -->
-    <appender name="FILE—LOG"
-              class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log_file}</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-            <fileNamePattern>${LOG_PATH}/ssz-%d{yyyy-MM-dd}-%i-${LOG_FILE}.gz</fileNamePattern>
-            <maxFileSize>${LOG_FILE_MAX_SIZE:-10MB}</maxFileSize>
-            <maxHistory>${LOG_FILE_MAX_HISTORY:-0}</maxHistory>
+            <fileNamePattern>${log_file}-%d{yyyy-MM-dd}.%i</fileNamePattern>
+            <maxFileSize>500MB</maxFileSize>
         </rollingPolicy>
-        <encoder>
+        <append>true</append>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <pattern>${FILE_LOG_PATTERN}</pattern>
-            <charset>UTF-8</charset>
         </encoder>
     </appender>
 
-    <!-- 时间滚动输出 level为 ERROR 日志 -->
-    <appender name="FILE—ERROR"
-              class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <filter class="ch.qos.logback.classic.filter.LevelFilter">
-            <level>ERROR</level>
-            <onMatch>ACCEPT</onMatch>
-            <onMismatch>DENY</onMismatch>
-        </filter>
-        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-            <fileNamePattern>${LOG_PATH}/error/ssz-error-%d{yyyy-MM-dd}-%i-${LOG_FILE}.gz</fileNamePattern>
-            <maxFileSize>${LOG_FILE_MAX_SIZE:-10MB}</maxFileSize>
-            <maxHistory>${LOG_FILE_MAX_HISTORY:-0}</maxHistory>
-        </rollingPolicy>
-        <encoder>
-            <pattern>${FILE_LOG_PATTERN}</pattern>
-            <charset>UTF-8</charset>
-        </encoder>
-    </appender>
 
-    <!-- 开发环境. 多个使用逗号隔开. -->
-    <springProfile name="dev,test">
-        <logger name="com.ssz" level="DEBUG" additivity="false">
-            <appender-ref ref="CONSOLE"/>
-            <appender-ref ref="FILE—LOG"/>
-            <appender-ref ref="FILE—ERROR"/>
-        </logger>
-        <logger name="org.springframework" level="INFO" additivity="false">
-            <appender-ref ref="CONSOLE"/>
-            <appender-ref ref="FILE—LOG"/>
-            <appender-ref ref="FILE—ERROR"/>
-        </logger>
-        <root level="ERROR">
-            <appender-ref ref="CONSOLE"/>
-            <appender-ref ref="FILE—LOG"/>
-            <appender-ref ref="FILE—ERROR"/>
-        </root>
-    </springProfile>
 
-    <!-- 生产环境. -->
-    <springProfile name="prod">
-        <logger name="com.ssz" level="INFO" additivity="false">
-            <appender-ref ref="CONSOLE"/>
-            <appender-ref ref="FILE—LOG"/>
-            <appender-ref ref="FILE—ERROR"/>
-        </logger>
-        <logger name="org.springframework" level="INFO" additivity="false">
-            <appender-ref ref="CONSOLE"/>
-            <appender-ref ref="FILE—LOG"/>
-            <appender-ref ref="FILE—ERROR"/>
-        </logger>
-        <root level="ERROR">
-            <appender-ref ref="CONSOLE"/>
-            <appender-ref ref="FILE—LOG"/>
-            <appender-ref ref="FILE—ERROR"/>
-        </root>
-    </springProfile>
-
+    <root level="info">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE"/>
+    </root>
 </configuration>

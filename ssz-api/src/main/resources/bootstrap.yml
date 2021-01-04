@@ -18,3 +18,4 @@ server:
 feign:
   sentinel:
     enabled: true
+
