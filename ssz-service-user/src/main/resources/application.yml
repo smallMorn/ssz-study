@@ -27,3 +27,6 @@ seata:
       namespace:
       username: ""
       password: ""
+  service:
+    vgroup-mapping:
+      my_test_tx_group: default

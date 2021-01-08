@@ -8,14 +8,17 @@ seata:
       namespace:
       serverAddr: 192.168.237.129:8848
       group: SEATA_GROUP
-      username: ""
-      password: ""
+      username: nacos
+      password: nacos
   registry:
     type: nacos
     nacos:
       application: seata-server
       server-addr: 192.168.237.129:8848
-      group : "SEATA_GROUP"
+      group: SEATA_GROUP
       namespace:
-      username: ""
-      password: ""
+      username: nacos
+      password: nacos
+  service:
+    vgroup-mapping:
+      ssz-api-group: default

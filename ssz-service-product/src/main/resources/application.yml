@@ -2,7 +2,7 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://192.168.237.129:3306/ssz-service-user?autoReconnect=true&useSSL=false&serverTimezone=UTC&useAffectedRows=true
+    url: jdbc:mysql://192.168.237.129:3306/ssz-service-product?autoReconnect=true&useSSL=false&serverTimezone=UTC&useAffectedRows=true
     username: root
     password: 123456
 seata:
@@ -27,3 +27,6 @@ seata:
       namespace:
       username: ""
       password: ""
+  service:
+    vgroup-mapping:
+      my_test_tx_group: default

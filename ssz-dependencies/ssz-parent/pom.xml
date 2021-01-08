@@ -58,11 +58,6 @@
             <artifactId>ssz-model</artifactId>
             <version>${project.version}</version>
         </dependency>
-        <!--feign-->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-openfeign</artifactId>
-        </dependency>
         <!--nacos做注册中心-->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>

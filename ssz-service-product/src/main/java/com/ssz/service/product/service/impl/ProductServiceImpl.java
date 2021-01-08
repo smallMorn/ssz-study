@@ -17,6 +17,7 @@ public class ProductServiceImpl implements ProductService {
     @GlobalTransactional
     public Integer deleteById(Long productId) {
         int num = productMapper.deleteByPrimaryKey(productId);
+        int a = 2/0;
         return num;
     }
 }
