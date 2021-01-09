@@ -9,7 +9,7 @@ seata:
   enabled: true
   enable-auto-data-source-proxy: true
   application-id: ssz-service-user
-  tx-service-group: my_test_tx_group
+  tx-service-group: ssz-service-user-group
   config:
     type: nacos
     nacos:

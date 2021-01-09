@@ -6,10 +6,12 @@ import com.ssz.common.model.dto.UserDTO;
 import com.ssz.api.dao.UserDao;
 import io.seata.spring.annotation.GlobalTransactional;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
+@Slf4j
 public class UserServiceImpl implements UserService {
 
     private final UserDao userDao;
