@@ -3,3 +3,5 @@
 /ssz-dependencies/ssz-model/target
 /ssz-service-product/target
 /ssz-service-user/target
+/logs
+/LOG_PATH_IS_UNDEFINED
