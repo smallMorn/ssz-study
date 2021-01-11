@@ -1,6 +1,0 @@
-com\ssz\api\dao\ProductDao.class
-com\ssz\api\ApiApplication.class
-com\ssz\api\controller\UserController.class
-com\ssz\api\dao\UserDao.class
-com\ssz\api\servcie\UserService.class
-com\ssz\api\servcie\impl\UserServiceImpl.class
