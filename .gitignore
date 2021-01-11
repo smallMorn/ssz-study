@@ -1,1 +1,4 @@
 /ssz-api/target/
+/ssz-dependencies/ssz-common/target
+/ssz-dependencies/ssz-model/target
+/ssz-service-product/ssz-service-product.iml
