@@ -1,27 +1,39 @@
 package com.ssz.service.user.service.impl;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.ssz.common.model.dto.UserDTO;
+import com.ssz.common.model.dto.UserQueryDTO;
 import com.ssz.service.user.entity.User;
 import com.ssz.service.user.mapper.UserMapper;
-import com.ssz.service.user.service.UserService;
-import com.ssz.common.model.dto.UserDTO;
-import io.seata.core.context.RootContext;
+import com.ssz.service.user.service.IUserService;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
+
+/**
+ * <p>
+ *  服务实现类
+ * </p>
+ *
+ * @author ssz
+ * @since 2021-01-11
+ */
 @Service
 @AllArgsConstructor
-@Slf4j
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService {
 
-    private final UserMapper userMapper;
+    private UserMapper userMapper;
 
     @Override
-    @Transactional
     public Boolean insert(UserDTO dto) {
-        userMapper.insert(new User().setUserName(dto.getUserName())
-                .setUserSex(dto.getUserSex()).setUserAge(dto.getUserAge()));
-        return true;
+        return null;
+    }
+
+    @Override
+    public Page list(UserQueryDTO queryDTO) {
+        Page<User> page = new Page<>(queryDTO.getPageCurrent(), queryDTO.getPageSize());
+        Page iPage = userMapper.selectList(page, queryDTO);
+        return iPage;
     }
 }

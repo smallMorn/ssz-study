@@ -2,7 +2,7 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://192.168.237.129:3306/ssz-service-user?autoReconnect=true&useSSL=false&serverTimezone=UTC&useAffectedRows=true
+    url: jdbc:mysql://192.168.237.129:3306/ssz-service-user?autoReconnect=true&useSSL=false&useAffectedRows=true&characterEncoding=utf8
     username: root
     password: 123456
 seata:
@@ -30,3 +30,18 @@ seata:
   service:
     vgroup-mapping:
       my_test_tx_group: default
+
+mybatis-plus:
+  global-config:
+    db-config:
+      id-type: auto
+      db-type: mysql
+      field-strategy: not-empty
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+  mapper-locations: classpath*:/mapper/*Mapper.xml
+  configuration:
+    cache-enabled: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+    auto-mapping-behavior: full
