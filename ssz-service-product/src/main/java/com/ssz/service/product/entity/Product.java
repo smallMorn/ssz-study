@@ -1,29 +1,54 @@
 package com.ssz.service.product.entity;
 
 import java.math.BigDecimal;
-import javax.persistence.*;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import java.time.LocalDateTime;
+import java.io.Serializable;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
+/**
+ * <p>
+ * 
+ * </p>
+ *
+ * @author ssz
+ * @since 2021-01-13
+ */
 @Data
+@EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class Product {
+public class Product implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     /**
-     * 主键id
+     * 商品ID
      */
-    @Id
-    @Column(name = "product_id")
+    @TableId(value = "product_id", type = IdType.AUTO)
     private Long productId;
 
     /**
      * 商品名称
      */
-    @Column(name = "product_name")
     private String productName;
 
     /**
-     * 商品价格
+     * 销售价格
      */
-    @Column(name = "sale_price")
     private BigDecimal salePrice;
+
+    /**
+     * 创建时间
+     */
+    private LocalDateTime gmtCreate;
+
+    /**
+     * 修改时间
+     */
+    private LocalDateTime gmtModified;
+
+
 }

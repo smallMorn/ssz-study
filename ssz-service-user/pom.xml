@@ -15,18 +15,6 @@
 
 
     <dependencies>
-        <!--api模块不能依赖到该依赖 否则项目会去寻找数据源导致启动报错-->
-<!--        <dependency>-->
-<!--            <groupId>tk.mybatis</groupId>-->
-<!--            <artifactId>mapper-spring-boot-starter</artifactId>-->
-<!--            <version>2.1.5</version>-->
-<!--        </dependency>-->
-        <!--mysql JDBC驱动-->
-<!--        <dependency>-->
-<!--            <groupId>mysql</groupId>-->
-<!--            <artifactId>mysql-connector-java</artifactId>-->
-<!--        </dependency>-->
-        <!-- mybatis plus 代码生成器 -->
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>

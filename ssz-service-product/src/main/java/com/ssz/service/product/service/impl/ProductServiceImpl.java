@@ -1,25 +1,20 @@
 package com.ssz.service.product.service.impl;
 
+import com.ssz.service.product.entity.Product;
 import com.ssz.service.product.mapper.ProductMapper;
-import com.ssz.service.product.service.ProductService;
-import io.seata.core.context.RootContext;
-import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import com.ssz.service.product.service.IProductService;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-
+/**
+ * <p>
+ *  服务实现类
+ * </p>
+ *
+ * @author ssz
+ * @since 2021-01-13
+ */
 @Service
-@AllArgsConstructor
-@Slf4j
-public class ProductServiceImpl implements ProductService {
+public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> implements IProductService {
 
-    private final ProductMapper productMapper;
-
-    @Override
-    @Transactional
-    public Integer deleteById(Long productId) {
-        int num = productMapper.deleteByPrimaryKey(productId);
-        return num;
-    }
 }

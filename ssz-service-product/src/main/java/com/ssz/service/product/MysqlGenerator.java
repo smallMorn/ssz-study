@@ -1,4 +1,5 @@
-package com.ssz.service.user;
+package com.ssz.service.product;
+
 
 import com.baomidou.mybatisplus.core.exceptions.MybatisPlusException;
 import com.baomidou.mybatisplus.core.toolkit.StringPool;
@@ -40,20 +41,20 @@ public class MysqlGenerator {
         // 全局配置
         GlobalConfig gc = new GlobalConfig();
         String projectPath = System.getProperty("user.dir");
-        gc.setOutputDir(projectPath + "/ssz-service-user/src/main/java");
+        gc.setOutputDir(projectPath + "/ssz-service-product/src/main/java");
         gc.setAuthor("ssz");
         gc.setOpen(false);
         //实体属性 Swagger2 注解
         gc.setSwagger2(false);
         gc.setBaseResultMap(true) ;//XML中的ResultMap标签
         gc.setBaseColumnList(true); //XML标签
-        gc.setFileOverride(false); //文件覆盖设置
+        gc.setFileOverride(true); //文件覆盖设置
         gc.setXmlName("%sXml");
         mpg.setGlobalConfig(gc);
 
         // 数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
-        dsc.setUrl("jdbc:mysql://192.168.237.129:3306/ssz-service-user?autoReconnect=true&useSSL=false&useAffectedRows=true");
+        dsc.setUrl("jdbc:mysql://192.168.237.129:3306/ssz-service-product?autoReconnect=true&useSSL=false&useAffectedRows=true");
         dsc.setDriverName("com.mysql.cj.jdbc.Driver");
         dsc.setUsername("root");
         dsc.setPassword("123456");
@@ -62,7 +63,7 @@ public class MysqlGenerator {
         // 包配置
         PackageConfig pc = new PackageConfig();
 //        pc.setModuleName(scanner("模块名"));
-        pc.setParent("com.ssz.service.user");
+        pc.setParent("com.ssz.service.product");
         pc.setEntity("entity");
         pc.setMapper("mapper");
         pc.setService("service");
@@ -88,8 +89,8 @@ public class MysqlGenerator {
         focList.add(new FileOutConfig(templatePath) {
             @Override
             public String outputFile(TableInfo tableInfo) {
-                // 自定义输出文件名 ， 如果你 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！+ pc.getModuleName()
-                return projectPath + "/ssz-service-user/src/main/resources/mapper"
+                // 自定义输出文件名 ， 如果你 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！ + pc.getModuleName()
+                return projectPath + "/ssz-service-product/src/main/resources/mapper"
                         + "/" + tableInfo.getEntityName() + "Mapper" + StringPool.DOT_XML;
             }
         });
