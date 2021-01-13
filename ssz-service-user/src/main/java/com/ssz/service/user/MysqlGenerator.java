@@ -47,7 +47,7 @@ public class MysqlGenerator {
         gc.setSwagger2(false);
         gc.setBaseResultMap(true) ;//XML中的ResultMap标签
         gc.setBaseColumnList(true); //XML标签
-        gc.setFileOverride(false); //文件覆盖设置
+        gc.setFileOverride(false); //文件覆盖设置 不允许覆盖 若修改表结构 则自己改动实体类和xml
         gc.setXmlName("%sXml");
         mpg.setGlobalConfig(gc);
 
@@ -111,8 +111,8 @@ public class MysqlGenerator {
 
         // 配置自定义输出模板
         //指定自定义模板路径，注意不要带上.ftl/.vm, 会根据使用的模板引擎自动识别
-        // templateConfig.setEntity("templates/entity2.java");
-        // templateConfig.setService();
+        // templateConfig.("templates/entity2.java");
+        // templateConfig.setSesetEntityrvice();
         // templateConfig.setController();
 
         templateConfig.setXml(null);

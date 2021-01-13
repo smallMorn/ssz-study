@@ -48,7 +48,7 @@ public class MysqlGenerator {
         gc.setSwagger2(false);
         gc.setBaseResultMap(true) ;//XML中的ResultMap标签
         gc.setBaseColumnList(true); //XML标签
-        gc.setFileOverride(true); //文件覆盖设置
+        gc.setFileOverride(false); //文件覆盖设置 不允许覆盖  若修改表结构 则自己改动实体类和xml
         gc.setXmlName("%sXml");
         mpg.setGlobalConfig(gc);
 
