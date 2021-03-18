@@ -29,7 +29,6 @@ public class UserController {
 
     @PostMapping("list")
     public ResultInfo list(@RequestBody UserQueryDTO queryDTO) {
-        LOG.info("加入了日志");
         if (Objects.isNull(queryDTO.getPageCurrent()) || queryDTO.getPageCurrent() < 0) {
             return ResultInfo.fail(ApiCode.ILLEGAL_PARAMETER);
         }
