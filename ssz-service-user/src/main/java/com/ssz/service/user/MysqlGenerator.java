@@ -125,8 +125,6 @@ public class MysqlGenerator {
 //        strategy.setSuperEntityClass("com.baomidou.mybatisplus.extension.activerecord.Model");
         strategy.setEntityLombokModel(true);
         strategy.setRestControllerStyle(true);
-
-        strategy.setEntityLombokModel(true);
         // 公共父类
 //        strategy.setSuperControllerClass("com.baomidou.ant.common.BaseController");
         // 写于父类中的公共字段
