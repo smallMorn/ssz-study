@@ -12,6 +12,7 @@ public enum CacheKey {
     KV_BULLET_FRAME(1, Unit.DAY);
 
     private static final String SEPARATOR = ":";
+    private static final String LOCK_KEY_PREFIX = "LOCK_";
 
     private Integer ttl;
 
@@ -28,6 +29,13 @@ public enum CacheKey {
 
     public String key(Object... suffix) {
         return this.name().toLowerCase() + SEPARATOR + Joiner.on(SEPARATOR).join(suffix);
+    }
+
+    public String lockKey() {
+        return LOCK_KEY_PREFIX + key();
+    }
+    public String lockKey(Object... suffix) {
+        return LOCK_KEY_PREFIX + key(Joiner.on(SEPARATOR).join(suffix));
     }
 
     public Integer getTtl() {
