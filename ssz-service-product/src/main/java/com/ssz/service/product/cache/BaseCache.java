@@ -1,5 +1,6 @@
 package com.ssz.service.product.cache;
 
+import com.google.common.base.Strings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,6 +57,10 @@ public abstract class BaseCache {
 //            // 缓存不存在，则直接返回空值
 //            return Optional.empty();
 //        }
+       //排除极端情况 返回值为空串问题
+        if (Strings.isNullOrEmpty(jedis.get(key))) {
+            return Optional.empty();
+        }
         // 如果缓存存在，则直接取缓存数据
         return Optional.ofNullable(fromRedis.run());
     }
