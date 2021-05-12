@@ -1,4 +1,4 @@
-package com.ssz.service.product.cache;
+package com.ssz.common.web.cache;
 
 import com.google.common.base.Joiner;
 

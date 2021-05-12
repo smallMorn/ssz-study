@@ -24,11 +24,6 @@
     </modules>
 
     <dependencies>
-        <!--redis-->
-        <dependency>
-            <groupId>redis.clients</groupId>
-            <artifactId>jedis</artifactId>
-        </dependency>
         <!--alibaba数据库连接池-->
         <dependency>
             <groupId>com.alibaba</groupId>
