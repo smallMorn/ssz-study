@@ -1,6 +1,8 @@
 /ssz-api/target/
+/ssz-api/ssz-api.iml
 /ssz-dependencies/ssz-common/target
 /ssz-dependencies/ssz-model/target
+/ssz-dependencies/ssz-parent/ssz-parent.iml
 /ssz-service-product/target
 /ssz-service-user/target
 /logs
