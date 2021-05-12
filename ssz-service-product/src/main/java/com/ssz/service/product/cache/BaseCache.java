@@ -36,26 +36,26 @@ public abstract class BaseCache {
      */
     protected final <T> Optional<T> execute(CacheKey cacheKey, Object suffix, JedisCallback<T> dbToRedis, JedisCallback<T> fromRedis) {
         String key = Objects.isNull(suffix) ? cacheKey.key() : cacheKey.key(suffix);
-        String lockKey = Objects.isNull(suffix) ? cacheKey.lockKey() : cacheKey.lockKey(suffix);
+        // String lockKey = Objects.isNull(suffix) ? cacheKey.lockKey() : cacheKey.lockKey(suffix);
         Integer ttl = cacheKey.getTtl();
 
         // SETNX 原子操作命令可以保证有且仅有一个Client可以获取ProtectKey防穿透的锁
         // 不使用jedis.exists()直接判断的原因是先判断exists然后set的方式并不是原子操作
-        Long setNx = jedis.setnx(lockKey, "");
+        Long setNx = jedis.setnx(key, "");
         // 如果获取到了protectKey的锁，则说明此次请求需要从DB中取数据填充缓存
         if (setNx == 1L) {
             //设置过期时间 防止出现死锁
-            jedis.expire(lockKey, 60);
+            //jedis.expire(lockKey, 60);
             // 缓存填充完毕，key存在，则直接从DB中取数据
             T data = dbToRedis.run();
             setTtl(jedis, key, ttl);
             return Optional.ofNullable(data);
         }
         // 如果没有拿到protectKey的锁，则说明其他Client正在/已经填充过缓存数据
-        if (!jedis.exists(key)) {
-            // 缓存不存在，则直接返回空值
-            return Optional.empty();
-        }
+//        if (!jedis.exists(key)) {
+//            // 缓存不存在，则直接返回空值
+//            return Optional.empty();
+//        }
         // 如果缓存存在，则直接取缓存数据
         return Optional.ofNullable(fromRedis.run());
     }
