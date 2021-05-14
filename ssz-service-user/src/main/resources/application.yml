@@ -29,7 +29,7 @@ seata:
       password: ""
   service:
     vgroup-mapping:
-      my_test_tx_group: default
+      ssz-service-user-group: default
 
 mybatis-plus:
   global-config:
