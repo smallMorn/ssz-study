@@ -1,5 +1,6 @@
 package com.ssz.api.dao;
 
+import com.ssz.common.web.result.ResultInfo;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -8,5 +9,5 @@ import org.springframework.web.bind.annotation.PathVariable;
 public interface ProductDao {
 
     @DeleteMapping(value = "/product/deleteById/{productId}")
-    int deleteByProductId(@PathVariable("productId") Long productId);
+    ResultInfo deleteByProductId(@PathVariable("productId") Long productId);
 }

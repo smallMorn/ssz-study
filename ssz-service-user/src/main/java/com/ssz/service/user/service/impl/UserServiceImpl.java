@@ -23,11 +23,15 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService {
 
-    private UserMapper userMapper;
+    private final UserMapper userMapper;
 
     @Override
     public Boolean insert(UserDTO dto) {
-        return null;
+        User user = new User();
+        user.setUserName(dto.getUserName());
+        user.setUserSex(dto.getUserSex());
+        user.setUserAge(dto.getUserAge());
+        return 1 == userMapper.insert(user);
     }
 
     @Override

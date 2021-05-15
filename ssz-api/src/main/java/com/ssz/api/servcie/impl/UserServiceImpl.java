@@ -1,6 +1,5 @@
 package com.ssz.api.servcie.impl;
 
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.ssz.api.servcie.UserService;
 import com.ssz.api.dao.ProductDao;
 import com.ssz.common.model.dto.UserDTO;

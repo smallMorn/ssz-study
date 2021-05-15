@@ -9,7 +9,7 @@ seata:
   enabled: true
   enable-auto-data-source-proxy: true
   application-id: ssz-service-product
-  tx-service-group: ssz-service-product-group
+  tx-service-group: my_test_tx_group
   config:
     type: nacos
     nacos:
@@ -29,4 +29,4 @@ seata:
       password: ""
   service:
     vgroup-mapping:
-      ssz-service-product-group: default
+      my_test_tx_group: default

@@ -19,8 +19,9 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping(value = "/insert")
-    public Boolean insert(@RequestBody UserDTO dto) {
-        return userService.insert(dto);
+    public ResultInfo insert(@RequestBody UserDTO dto) {
+        userService.insert(dto);
+        return ResultInfo.success();
     }
 
     @PostMapping("list")
@@ -29,5 +30,11 @@ public class UserController {
             return ResultInfo.fail(ApiCode.ILLEGAL_PARAMETER);
         }
         return userService.list(queryDTO);
+    }
+
+    @GetMapping("/get")
+    public ResultInfo get() {
+        String str = "启动成功了";
+        return ResultInfo.success(str);
     }
 }
