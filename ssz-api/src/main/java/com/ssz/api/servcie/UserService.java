@@ -9,4 +9,7 @@ public interface UserService {
     Boolean insert(UserDTO dto);
 
     ResultInfo list(UserQueryDTO queryDTO);
+
+    ResultInfo cacheList();
+
 }

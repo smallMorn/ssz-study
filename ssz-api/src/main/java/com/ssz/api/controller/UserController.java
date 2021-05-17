@@ -37,4 +37,9 @@ public class UserController {
         String str = "启动成功了";
         return ResultInfo.success(str);
     }
+
+    @GetMapping("/cache/list")
+    public ResultInfo cacheList(){
+        return userService.cacheList();
+    }
 }

@@ -31,4 +31,9 @@ public class UserServiceImpl implements UserService {
     public ResultInfo list(UserQueryDTO queryDTO) {
         return userDao.list(queryDTO);
     }
+
+    @Override
+    public ResultInfo cacheList() {
+        return userDao.cacheList();
+    }
 }

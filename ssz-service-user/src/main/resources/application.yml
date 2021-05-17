@@ -45,3 +45,11 @@ mybatis-plus:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
     map-underscore-to-camel-case: true
     auto-mapping-behavior: full
+
+redis:
+  host: 192.168.237.129
+  post: 6379
+  max-total: 5000
+  max-idle: 100
+  min-idle: 50
+  database: 11

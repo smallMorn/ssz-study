@@ -21,5 +21,9 @@
     <select id="selectList" resultType="com.ssz.service.user.entity.User">
         select * from user
     </select>
+
+    <select id="selectUserIdList" resultType="long">
+        select id from user where deleted = 0 order by gmt_create desc
+    </select>
 </mapper>
 

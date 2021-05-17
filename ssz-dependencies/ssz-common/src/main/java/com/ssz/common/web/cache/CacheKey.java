@@ -8,8 +8,11 @@ import com.google.common.base.Joiner;
  */
 public enum CacheKey {
 
-    //弹框缓存
-    KV_BULLET_FRAME(1, Unit.DAY);
+    LIST_USER(1,Unit.WEEK),
+
+
+    KV_BULLET_FRAME(1, Unit.DAY), //弹框缓存
+    KV_USER_DETAIL(1,Unit.DAY);
 
     private static final String SEPARATOR = ":";
     private static final String LOCK_KEY_PREFIX = "LOCK_";
