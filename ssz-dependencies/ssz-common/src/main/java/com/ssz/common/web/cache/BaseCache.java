@@ -58,7 +58,7 @@ public abstract class BaseCache {
 
     protected void setTtl(JedisCommands jedis, String key, String lockKey, Integer ttl) {
         //ttl值=-2说明key不存在  ttl=-1说明key永不过期,即没有设置过期时间 其他则返回过期时间
-        if (Objects.equals(-2, ttl) && Objects.equals(-1, ttl)) {
+        if (!Objects.equals(-2, ttl) && !Objects.equals(-1, ttl)) {
             ThreadLocalRandom threadLocalRandom = ThreadLocalRandom.current();
             //生成一个[1,2)之间的随机数，用于错开缓存时间，防止缓存雪崩
             float a = threadLocalRandom.nextFloat() + 1;

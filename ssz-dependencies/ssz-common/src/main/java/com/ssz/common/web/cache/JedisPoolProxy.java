@@ -21,11 +21,7 @@ public class JedisPoolProxy implements InvocationHandler {
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         try (Jedis jedis = jedisPool.getResource()) {
-            long t1 = System.currentTimeMillis();
-            Object result = method.invoke(jedis, args);
-            long t2 = System.currentTimeMillis();
-            //LOG.info("Redis Method: {}, Time Costs: {}ms,", method.getName(), t2 - t1);
-            return result;
+            return method.invoke(jedis, args);
         }
     }
 }

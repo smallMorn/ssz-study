@@ -27,6 +27,7 @@ public class RedisConfig {
     private Integer maxTotal;
     private Integer maxIdle;
     private Integer minIdle;
+    private Integer database;
 
     @Bean
     public JedisPool jedisPool(@Autowired RedisConfig redisProperties) {
@@ -35,9 +36,9 @@ public class RedisConfig {
         config.setMinIdle(redisProperties.getMinIdle());
         config.setMaxTotal(redisProperties.getMaxTotal());
         if (Strings.isNullOrEmpty(redisProperties.getPassword())) {
-            return new JedisPool(config, redisProperties.getHost(), redisProperties.getPort());
+            return new JedisPool(config, redisProperties.getHost(), redisProperties.getPort(), redisProperties.getDatabase());
         } else {
-            return new JedisPool(config, redisProperties.getHost(), redisProperties.getPort(), 2000, redisProperties.getPassword());
+            return new JedisPool(config, redisProperties.getHost(), redisProperties.getPort(), 2000, redisProperties.getPassword(), redisProperties.getDatabase());
         }
     }
 

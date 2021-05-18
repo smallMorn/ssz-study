@@ -10,17 +10,12 @@ public enum CacheKey {
 
     LIST_USER(1,Unit.WEEK),
 
-
-    KV_BULLET_FRAME(1, Unit.DAY), //弹框缓存
     KV_USER_DETAIL(1,Unit.DAY);
 
     private static final String SEPARATOR = ":";
     private static final String LOCK_KEY_PREFIX = "LOCK_";
 
     private Integer ttl;
-
-    CacheKey() {
-    }
 
     CacheKey(Integer amount, Unit unit) {
         this.ttl = amount * unit.getValue();
