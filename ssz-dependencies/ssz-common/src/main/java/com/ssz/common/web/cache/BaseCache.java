@@ -62,6 +62,7 @@ public abstract class BaseCache {
             ThreadLocalRandom threadLocalRandom = ThreadLocalRandom.current();
             //生成一个[1,2)之间的随机数，用于错开缓存时间，防止缓存雪崩
             float a = threadLocalRandom.nextFloat() + 1;
+            //将过期时间设置成一致，防止有的请求数据库，有的请求缓存，导致数据不一致的极端情况
             jedis.expire(key, (int) (a * ttl));
             jedis.expire(lockKey, (int) (a * ttl));
         }

@@ -36,7 +36,7 @@ public class RedisConfig {
         config.setMinIdle(redisProperties.getMinIdle());
         config.setMaxTotal(redisProperties.getMaxTotal());
         if (Strings.isNullOrEmpty(redisProperties.getPassword())) {
-            return new JedisPool(config, redisProperties.getHost(), redisProperties.getPort(), redisProperties.getDatabase());
+            return new JedisPool(config, redisProperties.getHost(), redisProperties.getPort(),redisProperties.getDatabase());
         } else {
             return new JedisPool(config, redisProperties.getHost(), redisProperties.getPort(), 2000, redisProperties.getPassword(), redisProperties.getDatabase());
         }
