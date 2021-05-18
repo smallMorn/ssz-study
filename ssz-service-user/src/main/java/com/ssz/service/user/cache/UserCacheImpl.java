@@ -34,10 +34,10 @@ public class UserCacheImpl extends BaseCache implements UserCache {
                 for (Long id : idList) {
                     jedis.rpush(key, String.valueOf(id));
                 }
+                list.addAll(idList);
                 if (idList.size() < 1000) {
                     break;
                 }
-                list.addAll(idList);
             }
             return list;
         };
