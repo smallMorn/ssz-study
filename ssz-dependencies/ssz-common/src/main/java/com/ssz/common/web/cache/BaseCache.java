@@ -37,7 +37,7 @@ public abstract class BaseCache {
 
         // SETNX 原子操作命令可以保证有且仅有一个Client可以获取ProtectKey防穿透的锁
         // 不使用jedis.exists()直接判断的原因是先判断exists然后set的方式并不是原子操作
-        Long setNx = jedis.setnx(lockKey, "");
+        Long setNx = jedis.setnx(lockKey, "lockKey");
         // 如果获取到了protectKey的锁，则说明此次请求需要从DB中取数据填充缓存
         if (setNx == 1L) {
             //设置过期时间 防止出现死锁
