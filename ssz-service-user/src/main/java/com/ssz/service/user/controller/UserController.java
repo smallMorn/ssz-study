@@ -48,4 +48,9 @@ public class UserController {
         return ResultInfo.success(userList);
     }
 
+    @GetMapping("/selectById/{id}")
+    public ResultInfo selectById(@PathVariable Long id){
+        User user = userCache.selectById(id);
+        return ResultInfo.success(user);
+    }
 }

@@ -5,6 +5,7 @@ import com.ssz.common.model.dto.UserQueryDTO;
 import com.ssz.common.web.result.ResultInfo;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -20,4 +21,6 @@ public interface UserDao {
     @GetMapping(value = "/user/cache/list")
     ResultInfo cacheList();
 
+    @GetMapping(value = "/user/selectById/{id}")
+    ResultInfo selectById(@PathVariable Long id);
 }

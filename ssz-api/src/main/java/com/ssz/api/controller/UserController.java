@@ -42,4 +42,9 @@ public class UserController {
     public ResultInfo cacheList(){
         return userService.cacheList();
     }
+
+    @GetMapping("/selectById")
+    public ResultInfo selectById(Long id){
+        return userService.selectById(id);
+    }
 }

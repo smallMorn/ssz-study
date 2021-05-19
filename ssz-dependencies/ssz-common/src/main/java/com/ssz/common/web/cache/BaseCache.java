@@ -40,11 +40,13 @@ public abstract class BaseCache {
         Long setNx = jedis.setnx(lockKey, "lockKey");
         // 如果获取到了protectKey的锁，则说明此次请求需要从DB中取数据填充缓存
         if (setNx == 1L) {
-            //设置过期时间 防止出现死锁
-            jedis.expire(lockKey, 60);
             // 缓存填充完毕，key存在，则直接从DB中取数据
             T data = dbToRedis.run();
             setTtl(jedis, key, lockKey, ttl);
+            if (Objects.isNull(data)) {
+                //对于不存在的数据 将lockKey过期时间设置成10S 防穿透的同时 也能将无用的lockKey存活时间降到最低
+                jedis.expire(lockKey, 10);
+            }
             return Optional.ofNullable(data);
         }
         // 如果没有拿到protectKey的锁，则说明其他Client正在/已经填充过缓存数据

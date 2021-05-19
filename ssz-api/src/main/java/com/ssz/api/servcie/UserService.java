@@ -12,4 +12,5 @@ public interface UserService {
 
     ResultInfo cacheList();
 
+    ResultInfo selectById(Long id);
 }

@@ -36,4 +36,9 @@ public class UserServiceImpl implements UserService {
     public ResultInfo cacheList() {
         return userDao.cacheList();
     }
+
+    @Override
+    public ResultInfo selectById(Long id) {
+        return userDao.selectById(id);
+    }
 }
