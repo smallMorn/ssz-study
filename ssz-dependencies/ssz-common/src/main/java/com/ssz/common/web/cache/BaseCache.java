@@ -2,6 +2,7 @@ package com.ssz.common.web.cache;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import redis.clients.jedis.commands.JedisCommands;
+import redis.clients.jedis.params.SetParams;
 
 import java.util.Objects;
 import java.util.Optional;
@@ -34,28 +35,26 @@ public abstract class BaseCache {
         String key = Objects.isNull(suffix) ? cacheKey.key() : cacheKey.key(suffix);
         String lockKey = Objects.isNull(suffix) ? cacheKey.lockKey() : cacheKey.lockKey(suffix);
         Integer ttl = cacheKey.getTtl();
-
-        // SETNX 原子操作命令可以保证有且仅有一个Client可以获取ProtectKey防穿透的锁
-        // 不使用jedis.exists()直接判断的原因是先判断exists然后set的方式并不是原子操作
-        Long setNx = jedis.setnx(lockKey, "lockKey");
-        // 如果获取到了protectKey的锁，则说明此次请求需要从DB中取数据填充缓存
-        if (setNx == 1L) {
-            // 缓存填充完毕，key存在，则直接从DB中取数据
-            T data = dbToRedis.run();
-            setTtl(jedis, key, lockKey, ttl);
-            if (Objects.isNull(data)) {
-                //对于不存在的数据 将lockKey过期时间设置成10S 防穿透的同时 也能将无用的lockKey存活时间降到最低
-                jedis.expire(lockKey, 10);
+        Boolean exists = jedis.exists(key);
+        if (exists){
+            // 如果缓存存在，则直接取缓存数据
+            return Optional.ofNullable(fromRedis.run());
+        }else {
+            SetParams setParams = new SetParams();
+            setParams.nx();
+            String result = jedis.set(lockKey, "lockKey", setParams);
+            if ("OK".equals(result)){
+                T data = dbToRedis.run();
+                setTtl(jedis, key, lockKey, ttl);
+                if (Objects.isNull(data)) {
+                    //对于不存在的数据 将lockKey过期时间设置成10S 防穿透的同时 也能将无用的key存活时间降到最低
+                    jedis.expire(key, 10);
+                }
+                return Optional.ofNullable(data);
             }
-            return Optional.ofNullable(data);
-        }
-        // 如果没有拿到protectKey的锁，则说明其他Client正在/已经填充过缓存数据
-        if (!jedis.exists(key)) {
-            // 缓存不存在，则直接返回空值
+            // 缓存正在填充 则直接返回空值
             return Optional.empty();
         }
-        // 如果缓存存在，则直接取缓存数据
-        return Optional.ofNullable(fromRedis.run());
     }
 
     protected void setTtl(JedisCommands jedis, String key, String lockKey, Integer ttl) {
@@ -64,9 +63,9 @@ public abstract class BaseCache {
             ThreadLocalRandom threadLocalRandom = ThreadLocalRandom.current();
             //生成一个[1,2)之间的随机数，用于错开缓存时间，防止缓存雪崩
             float a = threadLocalRandom.nextFloat() + 1;
-            //将过期时间设置成一致，防止有的请求数据库，有的请求缓存，导致数据不一致的极端情况
             jedis.expire(key, (int) (a * ttl));
-            jedis.expire(lockKey, (int) (a * ttl));
+            //将lockKey迅速过期，减少redis中key的数量
+            jedis.expire(lockKey, 10);
         }
     }
 
