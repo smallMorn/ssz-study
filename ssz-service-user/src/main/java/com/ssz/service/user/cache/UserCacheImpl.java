@@ -33,7 +33,9 @@ public class UserCacheImpl extends BaseCache implements UserCache {
                 Page<User> page = new Page<>(i, 1000);
                 List<Long> idList = userMapper.selectUserIdList(page);
                 if (!CollectionUtils.isEmpty(idList)){
-                    jedis.rpush(key, idList.toString());
+                    for (Long id : idList) {
+                        jedis.rpush(key, id.toString());
+                    }
                 }
                 list.addAll(idList);
                 if (idList.size() < 1000) {
