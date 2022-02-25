@@ -8,6 +8,7 @@ import com.ssz.service.user.entity.User;
 import com.ssz.service.user.mapper.UserMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -31,8 +32,8 @@ public class UserCacheImpl extends BaseCache implements UserCache {
             for (int i = 1; ; i++) {
                 Page<User> page = new Page<>(i, 1000);
                 List<Long> idList = userMapper.selectUserIdList(page);
-                for (Long id : idList) {
-                    jedis.rpush(key, String.valueOf(id));
+                if (!CollectionUtils.isEmpty(idList)){
+                    jedis.rpush(key, idList.toString());
                 }
                 list.addAll(idList);
                 if (idList.size() < 1000) {
