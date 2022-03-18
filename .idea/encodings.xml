@@ -4,8 +4,12 @@
     <file url="file://$PROJECT_DIR$/ssz-api/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ssz-api/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ssz-dependencies" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ssz-dependencies/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ssz-dependencies/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ssz-dependencies/ssz-common/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ssz-dependencies/ssz-model/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ssz-dependencies/ssz-parent/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ssz-dependencies/ssz-parent/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ssz-service-product" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ssz-service-product/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ssz-service-product/src/main/resources" charset="UTF-8" />
