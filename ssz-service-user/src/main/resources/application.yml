@@ -47,7 +47,7 @@ mybatis-plus:
     auto-mapping-behavior: full
 
 redis:
-  host: 192.168.237.129
+  host: 127.0.0.1
   port: 6379
   password: 123456
   max-total: 5000
