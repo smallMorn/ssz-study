@@ -1,5 +1,6 @@
 package com.ssz.service.product.service.impl;
 
+import com.ssz.common.model.dto.ProductDTO;
 import com.ssz.service.product.entity.Product;
 import com.ssz.service.product.mapper.ProductMapper;
 import com.ssz.service.product.service.IProductService;
@@ -24,5 +25,13 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
     @Override
     public void deleteById(Long productId) {
         productMapper.deleteById(productId);
+    }
+
+    @Override
+    public void insert(ProductDTO productDTO) {
+        Product product = new Product();
+        product.setProductId(productDTO.getProductId());
+        product.setProductName(productDTO.getProductName());
+        productMapper.insert(product);
     }
 }

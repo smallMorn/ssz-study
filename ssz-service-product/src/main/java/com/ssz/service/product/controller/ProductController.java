@@ -1,7 +1,9 @@
 package com.ssz.service.product.controller;
 
 
+import com.ssz.common.model.dto.ProductDTO;
 import com.ssz.common.web.result.ResultInfo;
+import com.ssz.service.product.entity.Product;
 import com.ssz.service.product.service.IProductService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +26,12 @@ public class ProductController {
     @DeleteMapping("/deleteById/{productId}")
     public ResultInfo deleteById(@PathVariable Long productId){
         productService.deleteById(productId);
+        return ResultInfo.success();
+    }
+
+    @PostMapping("/insert")
+    public ResultInfo insert(@RequestBody ProductDTO productDTO){
+        productService.insert(productDTO);
         return ResultInfo.success();
     }
 }

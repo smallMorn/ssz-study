@@ -23,8 +23,8 @@ public class Product implements Serializable {
     /**
      * 商品ID
      */
-    @TableId(value = "product_id", type = IdType.AUTO)
-    private Long productId;
+    @TableId(value = "product_id", type = IdType.INPUT)
+    private String productId;
 
     /**
      * 商品名称
@@ -39,7 +39,7 @@ public class Product implements Serializable {
     /**
      * 创建时间
      */
-    private LocalDateTime gmtCreate;
+    private LocalDateTime gmtCreated;
 
     /**
      * 修改时间

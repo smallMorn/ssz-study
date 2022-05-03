@@ -9,7 +9,7 @@ seata:
   enabled: true
   enable-auto-data-source-proxy: true
   application-id: ssz-service-product
-  tx-service-group: my_test_tx_group
+  tx-service-group: my_tx_group
   config:
     type: nacos
     nacos:
@@ -29,4 +29,13 @@ seata:
       password: ""
   service:
     vgroup-mapping:
-      my_test_tx_group: default
+      my_tx_group: default
+
+redis:
+  host: 127.0.0.1
+  port: 6379
+  password: 123456
+  max-total: 5000
+  max-idle: 100
+  min-idle: 50
+  database: 11

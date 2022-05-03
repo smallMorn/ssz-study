@@ -1,5 +1,6 @@
 package com.ssz.service.product.service;
 
+import com.ssz.common.model.dto.ProductDTO;
 import com.ssz.service.product.entity.Product;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -14,4 +15,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
 public interface IProductService extends IService<Product> {
 
     void deleteById(Long productId);
+
+    void insert(ProductDTO productDTO);
 }
