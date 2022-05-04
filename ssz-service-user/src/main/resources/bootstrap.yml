@@ -13,7 +13,7 @@ spring:
         server-addr: 127.0.0.1:8848
         username: "nacos"
         password: "nacos"
-        file-extension: yaml
+        file-extension: yml
 server:
   port: 1002
 #开启feign对sentinel的支持
