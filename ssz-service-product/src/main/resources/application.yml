@@ -7,7 +7,6 @@ spring:
     password: ssz1314..
 seata:
   enabled: true
-  enable-auto-data-source-proxy: true
   application-id: ssz-service-product
   tx-service-group: my_tx_group
   config:
@@ -39,3 +38,17 @@ redis:
   max-idle: 100
   min-idle: 50
   database: 11
+
+mybatis-plus:
+  global-config:
+    db-config:
+      db-type: mysql
+      field-strategy: not-empty
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+  mapper-locations: classpath*:/mapper/*Mapper.xml
+  configuration:
+    cache-enabled: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+    auto-mapping-behavior: full

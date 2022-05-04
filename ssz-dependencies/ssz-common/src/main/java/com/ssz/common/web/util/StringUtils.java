@@ -20,7 +20,7 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
     public static final String UTF_8 = Charsets.UTF_8.displayName();
     private static final String MERCHANT_CODE_TEMPLATE = "%s%02d%04d";
 
-    private static final String PRODUCT_CODE_TEMPLATE = "%s%06d";
+    private static final String PRODUCT_CODE_TEMPLATE = "%s%s";
     private static final String PRODUCT_SETTLE_CODE_TEMPLATE = "%04d%s%04d";
 
     private static final String INVENTORY_SN_TEMPLATE = "%s%06d";

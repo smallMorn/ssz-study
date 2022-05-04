@@ -7,7 +7,7 @@
         <result column="user_name" property="userName" />
         <result column="user_sex" property="userSex" />
         <result column="user_age" property="userAge" />
-        <result column="gmt_create" property="gmtCreate" />
+        <result column="gmt_create" property="gmtCreated" />
         <result column="gmt_modified" property="gmtModified" />
         <result column="deleted" property="deleted" />
     </resultMap>
@@ -23,7 +23,7 @@
     </select>
 
     <select id="selectUserIdList" resultType="long">
-        select id from user where deleted = 0 order by gmt_create desc
+        select id from user where deleted = 0 order by gmt_created desc
     </select>
 </mapper>
 

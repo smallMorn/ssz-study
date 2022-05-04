@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 public interface UserDao {
 
     @PostMapping(value = "/user/insert")
-    Boolean insert(@RequestBody UserDTO dto);
+    ResultInfo insert(@RequestBody UserDTO dto);
 
     @PostMapping(value = "/user/list")
     ResultInfo list(@RequestBody UserQueryDTO queryDTO);

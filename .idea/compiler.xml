@@ -30,7 +30,7 @@
       <module name="ssz-common" options="-parameters" />
       <module name="ssz-dependencies" options="" />
       <module name="ssz-model" options="-parameters" />
-      <module name="ssz-parent" options="-parameters" />
+      <module name="ssz-parent" options="" />
       <module name="ssz-service-product" options="-parameters" />
       <module name="ssz-service-user" options="-parameters" />
     </option>

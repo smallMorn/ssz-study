@@ -25,8 +25,9 @@ public class UserController {
     private final UserCache userCache;
 
     @PostMapping("/insert")
-    public Boolean insert(@RequestBody UserDTO dto) {
-        return userService.insert(dto);
+    public ResultInfo insert(@RequestBody UserDTO dto) {
+        userService.insert(dto);
+        return ResultInfo.success();
     }
 
     @PostMapping("/list")
@@ -49,7 +50,7 @@ public class UserController {
     }
 
     @GetMapping("/selectById/{id}")
-    public ResultInfo selectById(@PathVariable Long id){
+    public ResultInfo selectById(@PathVariable Long id) {
         User user = userCache.selectById(id);
         return ResultInfo.success(user);
     }
