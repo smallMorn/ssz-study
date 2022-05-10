@@ -1,7 +1,7 @@
 seata:
   enabled: true
   application-id: ssz-api
-  tx-service-group: ssz-api-group
+  tx-service-group: my_tx_group
   config:
     type: nacos
     nacos:
@@ -21,4 +21,4 @@ seata:
       password: nacos
   service:
     vgroup-mapping:
-      ssz-api-group: default
+      my_tx_group: default

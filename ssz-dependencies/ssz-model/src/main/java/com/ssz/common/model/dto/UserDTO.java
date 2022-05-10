@@ -12,9 +12,9 @@ public class UserDTO implements Serializable {
 
     private String userName;
 
-    private String userSex;
+    private Integer userSex;
 
     private Integer userAge;
 
-    private Long productId;
+    private String productName;
 }

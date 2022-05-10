@@ -7,9 +7,8 @@ spring:
     password: ssz1314..
 seata:
   enabled: true
-  enable-auto-data-source-proxy: true
   application-id: ssz-service-user
-  tx-service-group: my_test_tx_group
+  tx-service-group: my_tx_group
   config:
     type: nacos
     nacos:
@@ -29,12 +28,11 @@ seata:
       password: ""
   service:
     vgroup-mapping:
-      my_test_tx_group: default
+      my_tx_group: default
 
 mybatis-plus:
   global-config:
     db-config:
-      id-type: auto
       db-type: mysql
       field-strategy: not-empty
       logic-delete-value: 1

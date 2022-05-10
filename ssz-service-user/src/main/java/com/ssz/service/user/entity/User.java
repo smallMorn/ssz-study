@@ -36,7 +36,7 @@ public class User implements Serializable {
     /**
      * 性别
      */
-    private String userSex;
+    private Integer userSex;
 
     /**
      * 年龄
@@ -46,7 +46,7 @@ public class User implements Serializable {
     /**
      * 创建时间
      */
-    private LocalDateTime gmtCreate;
+    private LocalDateTime gmtCreated;
 
     /**
      * 修改时间

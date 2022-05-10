@@ -1,7 +1,10 @@
 package com.ssz.common.web.util;
 
 import com.google.common.base.Charsets;
+import org.apache.commons.lang3.time.DateUtils;
 
+import java.time.LocalDate;
+import java.util.UUID;
 
 
 public class StringUtils extends org.apache.commons.lang3.StringUtils {
@@ -17,7 +20,7 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
     public static final String UTF_8 = Charsets.UTF_8.displayName();
     private static final String MERCHANT_CODE_TEMPLATE = "%s%02d%04d";
 
-    private static final String PRODUCT_CODE_TEMPLATE = "%s%06d";
+    private static final String PRODUCT_CODE_TEMPLATE = "%s%s";
     private static final String PRODUCT_SETTLE_CODE_TEMPLATE = "%04d%s%04d";
 
     private static final String INVENTORY_SN_TEMPLATE = "%s%06d";
@@ -37,13 +40,12 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
 
     /**
      * 生成商品编码: 年月日[20190101] + 流水号[000001]
-     * @param sn
+     *
      * @return
      */
-//    public static String generateProductCode(int sn) {
-//        checkServerArgument(sn < 1000000, "当天商品流水号大于 1000000");
-//        return String.format(PRODUCT_CODE_TEMPLATE, DateUtils.localDate2String(LocalDate.now(), DateUtils.SHORT_DATE_PATTERN), sn);
-//    }
+    public static String generateProductCode() {
+        return String.format(PRODUCT_CODE_TEMPLATE, UUID.randomUUID().toString().replaceAll("-", "").substring(0, 10), System.currentTimeMillis());
+    }
 
     /**
      * 生成商品系统结算码: 年月日[191101] + 流水号[000001]
