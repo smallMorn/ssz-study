@@ -15,8 +15,14 @@ import javax.annotation.Resource;
 @Component
 public class DiscoveryProperties {
 
+    /**
+     * route属性的值
+     */
     public String route = "default";
 
+    /**
+     * route属性的名称
+     */
     public String routeFieldName;
 
     @Resource
