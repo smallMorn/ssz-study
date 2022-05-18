@@ -1,5 +1,6 @@
 package com.ssz.common.web.ribbon;
 
+import com.netflix.client.config.IClientConfig;
 import com.netflix.loadbalancer.ILoadBalancer;
 import com.netflix.loadbalancer.IRule;
 import com.netflix.loadbalancer.Server;
@@ -8,9 +9,12 @@ import java.util.List;
 
 public class MySelfLoadBalancer implements ILoadBalancer {
 
+    private final IClientConfig iClientConfig;
+
     private final IRule rule;
 
-    public MySelfLoadBalancer(IRule rule) {
+    public MySelfLoadBalancer(IClientConfig iClientConfig, IRule rule) {
+        this.iClientConfig = iClientConfig;
         this.rule = rule;
     }
 
