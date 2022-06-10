@@ -5,7 +5,10 @@ import com.netflix.loadbalancer.ILoadBalancer;
 import com.netflix.loadbalancer.IRule;
 import com.netflix.loadbalancer.Server;
 
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MySelfLoadBalancer implements ILoadBalancer {
 
@@ -13,9 +16,13 @@ public class MySelfLoadBalancer implements ILoadBalancer {
 
     private final IRule rule;
 
-    public MySelfLoadBalancer(IClientConfig iClientConfig, IRule rule) {
+    private final HeaderThreadLocal headerThreadLocal;
+
+
+    public MySelfLoadBalancer(IClientConfig iClientConfig, IRule rule, HeaderThreadLocal headerThreadLocal) {
         this.iClientConfig = iClientConfig;
         this.rule = rule;
+        this.headerThreadLocal = headerThreadLocal;
     }
 
     @Override
@@ -40,11 +47,16 @@ public class MySelfLoadBalancer implements ILoadBalancer {
 
     @Override
     public List<Server> getReachableServers() {
+        Map<String, Collection<String>> headers =  headerThreadLocal.getHeaders();
+        if (headers == null) {
+            headers = new HashMap<>(1);
+        }
         return null;
     }
 
     @Override
     public List<Server> getAllServers() {
-        return null;
+        return getReachableServers();
     }
+
 }
