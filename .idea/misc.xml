@@ -17,6 +17,8 @@
         <option value="$PROJECT_DIR$/ssz-dependencies/ssz-parent/ssz-service-parent/pom.xml" />
         <option value="$PROJECT_DIR$/ssz-dependencies/ssz-common-web/pom.xml" />
         <option value="$PROJECT_DIR$/ssz-api/pom.xml" />
+        <option value="$PROJECT_DIR$/ssz-api/ssz-gateway/pom.xml" />
+        <option value="$PROJECT_DIR$/ssz-gateway/ssz-gateway/pom.xml" />
       </list>
     </option>
   </component>
