@@ -11,7 +11,7 @@
     </parent>
 
     <artifactId>ssz-service-user</artifactId>
-    <name>Ssz Service User</name>
+    <name>ssz Service User</name>
 
 
     <dependencies>

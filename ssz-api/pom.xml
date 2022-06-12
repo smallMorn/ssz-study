@@ -12,7 +12,7 @@
 	</parent>
 
 	<artifactId>ssz-api</artifactId>
-	<name>Ssz Api</name>
+	<name>ssz Api</name>
 
 	<dependencies>
 		<!--feign-->
