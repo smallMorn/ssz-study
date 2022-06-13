@@ -9,10 +9,11 @@ spring:
         locator:
           enabled: true
       routes:
-        id: api
-        uri: lb://http://api
-        predicates:
-          - Path=/api/**
+        - id: api
+          #lb:uri 的协议，表示开启 Spring Cloud Gateway 的负载均衡功能
+          uri: lb://api
+          predicates:
+            - Path=/api/**
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
