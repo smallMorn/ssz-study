@@ -11,7 +11,7 @@
     </parent>
 
     <artifactId>ssz-gateway</artifactId>
-    <name>ssz gateway</name>
+    <name>ssz Gateway</name>
 
     <dependencies>
         <!--gateway依赖 -->
