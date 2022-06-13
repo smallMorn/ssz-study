@@ -7,7 +7,8 @@ package com.ssz.common.web.enumerate;
 public enum ApiCode {
 
     SUCCESS(200, "成功"),
-    ILLEGAL_PARAMETER(201,"参数非法");
+    ILLEGAL_PARAMETER(201,"参数非法"),
+    TOKEN_ERROR(202, "token验证失败");
 
     public int code;
     public String message;

@@ -1,6 +1,8 @@
 package com.ssz.gateway.filter;
 
 import com.alibaba.fastjson.JSONObject;
+import com.ssz.common.web.enumerate.ApiCode;
+import com.ssz.common.web.result.ResultInfo;
 import lombok.Data;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
@@ -54,21 +56,23 @@ public class GatewayFilter implements GlobalFilter {
         }
         //正常解析token
         //return decrypt(path, token, exchange, chain, response);
-        return chain.filter(exchange);
+        if (Objects.equals(token,"12345")){
+            return chain.filter(exchange);
+        }
+        return authError(response);
     }
 
     /**
      * 验证失败直接响应异常
      *
      * @param resp 响应主体
-     * @param e    异常类型
      * @return 输出返回
      */
-//    private Mono<Void> authError(ServerHttpResponse resp, BaseException e) {
-//        resp.getHeaders().add("Content-Type", MediaType.APPLICATION_JSON_UTF8_VALUE);
-//        DataBuffer buffer = resp.bufferFactory().wrap(JSONObject.toJSONString(Result.failure(e.getStatus().getCode(), e.getMessage())).getBytes(StandardCharsets.UTF_8));
-//        return resp.writeWith(Flux.just(buffer));
-//    }
+    private Mono<Void> authError(ServerHttpResponse resp) {
+        resp.getHeaders().add("Content-Type", MediaType.APPLICATION_JSON_UTF8_VALUE);
+        DataBuffer buffer = resp.bufferFactory().wrap(JSONObject.toJSONString(ResultInfo.fail(ApiCode.TOKEN_ERROR)).getBytes(StandardCharsets.UTF_8));
+        return resp.writeWith(Flux.just(buffer));
+    }
 //
 //    private Mono<Void> decrypt(String requestUri, String accessToken, ServerWebExchange exchange, GatewayFilterChain chain, ServerHttpResponse response) {
 //        String requestPrefix = "/" + StringUtils.substringBefore(StringUtils.substringAfter(requestUri, "/"), "/");
