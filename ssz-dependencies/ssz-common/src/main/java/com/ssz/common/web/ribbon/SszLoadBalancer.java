@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class MySelfLoadBalancer implements ILoadBalancer {
+public class SszLoadBalancer implements ILoadBalancer {
 
     private final IClientConfig iClientConfig;
 
@@ -19,7 +19,7 @@ public class MySelfLoadBalancer implements ILoadBalancer {
     private final HeaderThreadLocal headerThreadLocal;
 
 
-    public MySelfLoadBalancer(IClientConfig iClientConfig, IRule rule, HeaderThreadLocal headerThreadLocal) {
+    public SszLoadBalancer(IClientConfig iClientConfig, IRule rule, HeaderThreadLocal headerThreadLocal) {
         this.iClientConfig = iClientConfig;
         this.rule = rule;
         this.headerThreadLocal = headerThreadLocal;
