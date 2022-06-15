@@ -1,7 +1,5 @@
 package com.ssz.gateway.filter;
 
-import com.ssz.common.web.constants.DiscoveryConstant;
-import com.ssz.common.web.ribbon.HeaderThreadLocal;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -32,28 +30,23 @@ public class GatewayFilter implements GlobalFilter, Ordered {
 
     private final String token = "token";
 
-    private HeaderThreadLocal headerThreadLocal;
-
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
         ServerHttpRequest request = exchange.getRequest();
         ServerHttpResponse response = exchange.getResponse();
-        HttpHeaders headers = request.getHeaders();
-        List<String> tokens = headers.get(token);
-        //绑定请求头route的值
-        List<String> routeList = headers.get(DiscoveryConstant.ROUTE_FIELD_NAME);
-        if (!CollectionUtils.isEmpty(routeList)){
-            headerThreadLocal.setLocal(routeList.get(0));
-        }
-        String token = tokens.get(0);
         String path = request.getURI().getPath();
         //不使用token
         if (ignoreTokenUrls.contains(path)) {
             return chain.filter(exchange);
         }
-        if (!Objects.equals(token, "12345")) {
-            response.setStatusCode(HttpStatus.NOT_ACCEPTABLE);
-            return response.setComplete();
+        HttpHeaders headers = request.getHeaders();
+        List<String> tokens = headers.get(token);
+        if (!CollectionUtils.isEmpty(tokens)){
+            String token = tokens.get(0);
+            if (!Objects.equals(token, "12345")) {
+                response.setStatusCode(HttpStatus.NOT_ACCEPTABLE);
+                return response.setComplete();
+            }
         }
         return chain.filter(exchange);
     }

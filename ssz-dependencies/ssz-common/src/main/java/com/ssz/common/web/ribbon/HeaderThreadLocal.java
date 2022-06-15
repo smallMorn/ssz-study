@@ -24,7 +24,7 @@ public class HeaderThreadLocal<T> {
         this.local.set(obj);
     }
 
-    public void clear() {
+    public void removeLocal() {
         local.remove();
     }
 

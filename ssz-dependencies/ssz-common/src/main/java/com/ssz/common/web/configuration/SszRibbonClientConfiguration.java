@@ -4,7 +4,7 @@ import com.netflix.client.config.IClientConfig;
 import com.netflix.loadbalancer.ILoadBalancer;
 import com.netflix.loadbalancer.IRule;
 import com.ssz.common.web.ribbon.HeaderThreadLocal;
-import com.ssz.common.web.ribbon.SszLoadBalancer;
+import com.ssz.common.web.ribbon.MulLoadBalancer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.cloud.netflix.ribbon.PropertiesFactory;
@@ -27,7 +27,7 @@ public class SszRibbonClientConfiguration {
         if (this.propertiesFactory.isSet(ILoadBalancer.class, name)) {
             return this.propertiesFactory.get(ILoadBalancer.class, config, name);
         }
-        return new SszLoadBalancer(config, rule, headerThreadLocal);
+        return new MulLoadBalancer(config, rule, headerThreadLocal);
     }
 
 }
