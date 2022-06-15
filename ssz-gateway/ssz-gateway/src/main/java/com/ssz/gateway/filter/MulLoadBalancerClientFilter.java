@@ -60,7 +60,7 @@ public class MulLoadBalancerClientFilter implements GlobalFilter, Ordered {
                     overrideScheme = url.getScheme();
                 }
                 DelegatingServiceInstance serviceInstance = new DelegatingServiceInstance(response.getServer(), overrideScheme);
-                URI requestUrl = this.reconstructUri(serviceInstance, uri);
+                URI requestUrl = LoadBalancerUriTools.reconstructURI(serviceInstance, uri);
                 if (log.isTraceEnabled()) {
                     log.trace("LoadBalancerClientFilter url chosen: " + requestUrl);
                 }
@@ -69,13 +69,10 @@ public class MulLoadBalancerClientFilter implements GlobalFilter, Ordered {
         }).then(chain.filter(exchange));
     }
 
-    private URI reconstructUri(ServiceInstance serviceInstance, URI original) {
-        return LoadBalancerUriTools.reconstructURI(serviceInstance, original);
-    }
-
     private Mono<Response<ServiceInstance>> choose(ServerWebExchange exchange) {
         return Mono.create(o -> o.success(response(exchange)));
     }
+
     private Response<ServiceInstance> response(ServerWebExchange exchange) {
         URI uri = exchange.getAttribute(ServerWebExchangeUtils.GATEWAY_REQUEST_URL_ATTR);
         Response<ServiceInstance> response;
