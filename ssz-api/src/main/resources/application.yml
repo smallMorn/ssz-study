@@ -22,12 +22,3 @@ seata:
   service:
     vgroup-mapping:
       my_tx_group: default
-
-redis:
-  host: 127.0.0.1
-  port: 6379
-  password: 123456
-  max-total: 5000
-  max-idle: 100
-  min-idle: 50
-  database: 11
