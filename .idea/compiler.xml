@@ -9,10 +9,11 @@
         <outputRelativeToContentRoot value="true" />
         <module name="ssz-api" />
         <module name="ssz-service-user" />
+        <module name="ssz-mul" />
+        <module name="ssz-gateway" />
         <module name="ssz-service-product" />
         <module name="ssz-common" />
         <module name="ssz-model" />
-        <module name="ssz-gateway" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="8">
@@ -21,6 +22,7 @@
       <module name="ssz-dependencies" target="1.8" />
       <module name="ssz-gateway" target="1.8" />
       <module name="ssz-model" target="1.8" />
+      <module name="ssz-mul" target="1.8" />
       <module name="ssz-parent" target="1.8" />
       <module name="ssz-service-product" target="1.8" />
       <module name="ssz-service-user" target="1.8" />
@@ -33,6 +35,7 @@
       <module name="ssz-dependencies" options="" />
       <module name="ssz-gateway" options="-parameters" />
       <module name="ssz-model" options="-parameters" />
+      <module name="ssz-mul" options="-parameters" />
       <module name="ssz-parent" options="" />
       <module name="ssz-service-product" options="-parameters" />
       <module name="ssz-service-user" options="-parameters" />

@@ -1,4 +1,4 @@
-package com.ssz.common.web.constants;
+package com.ssz.mul.constants;
 
 public interface DiscoveryConstant {
 

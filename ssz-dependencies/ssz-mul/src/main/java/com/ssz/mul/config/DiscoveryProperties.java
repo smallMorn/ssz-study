@@ -1,7 +1,7 @@
-package com.ssz.common.web.configuration;
+package com.ssz.mul.config;
 
 import com.alibaba.cloud.nacos.NacosDiscoveryProperties;
-import com.ssz.common.web.constants.DiscoveryConstant;
+import com.ssz.mul.constants.DiscoveryConstant;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;

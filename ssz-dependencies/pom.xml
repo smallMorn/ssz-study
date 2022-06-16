@@ -22,6 +22,7 @@
         <module>ssz-model</module>
         <module>ssz-common</module>
         <module>ssz-parent</module>
+        <module>ssz-mul</module>
     </modules>
     <properties>
 

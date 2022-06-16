@@ -1,4 +1,4 @@
-package com.ssz.common.web.configuration;
+package com.ssz.common.web.config;
 
 import com.google.common.base.Strings;
 import com.ssz.common.web.cache.JedisPoolProxy;

@@ -1,4 +1,4 @@
-package com.ssz.common.web.ribbon;
+package com.ssz.mul.ribbon;
 
 import com.netflix.client.config.IClientConfig;
 import com.netflix.loadbalancer.ILoadBalancer;

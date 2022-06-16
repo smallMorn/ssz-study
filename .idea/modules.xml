@@ -7,6 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/ssz-dependencies/ssz-dependencies.iml" filepath="$PROJECT_DIR$/ssz-dependencies/ssz-dependencies.iml" />
       <module fileurl="file://$PROJECT_DIR$/ssz-gateway/ssz-gateway/ssz-gateway.iml" filepath="$PROJECT_DIR$/ssz-gateway/ssz-gateway/ssz-gateway.iml" />
       <module fileurl="file://$PROJECT_DIR$/ssz-dependencies/ssz-model/ssz-model.iml" filepath="$PROJECT_DIR$/ssz-dependencies/ssz-model/ssz-model.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ssz-dependencies/ssz-mul/ssz-mul.iml" filepath="$PROJECT_DIR$/ssz-dependencies/ssz-mul/ssz-mul.iml" />
       <module fileurl="file://$PROJECT_DIR$/ssz-dependencies/ssz-parent/ssz-parent.iml" filepath="$PROJECT_DIR$/ssz-dependencies/ssz-parent/ssz-parent.iml" />
       <module fileurl="file://$PROJECT_DIR$/ssz-service-product/ssz-service-product.iml" filepath="$PROJECT_DIR$/ssz-service-product/ssz-service-product.iml" />
       <module fileurl="file://$PROJECT_DIR$/ssz-service-user/ssz-service-user.iml" filepath="$PROJECT_DIR$/ssz-service-user/ssz-service-user.iml" />

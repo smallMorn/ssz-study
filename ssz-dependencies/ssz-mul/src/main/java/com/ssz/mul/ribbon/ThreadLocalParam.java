@@ -1,4 +1,4 @@
-package com.ssz.common.web.ribbon;
+package com.ssz.mul.ribbon;
 
 import lombok.Data;
 import org.springframework.web.server.ServerWebExchange;

@@ -1,4 +1,4 @@
-package com.ssz.common.web.configuration;
+package com.ssz.common.web.config;
 
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;

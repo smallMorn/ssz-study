@@ -1,4 +1,4 @@
-package com.ssz.common.web.ribbon;
+package com.ssz.mul.ribbon;
 
 import java.util.Collection;
 import java.util.Map;

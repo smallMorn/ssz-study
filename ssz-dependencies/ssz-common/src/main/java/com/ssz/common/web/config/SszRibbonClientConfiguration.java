@@ -1,4 +1,4 @@
-package com.ssz.common.web.configuration;
+package com.ssz.common.web.config;
 
 import com.netflix.client.config.IClientConfig;
 import com.netflix.loadbalancer.ILoadBalancer;
