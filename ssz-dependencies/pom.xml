@@ -70,12 +70,6 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <!--gateway依赖 -->
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-starter-gateway</artifactId>
-                <version>${alibaba.cloud.version}</version>
-            </dependency>
             <!-- nacos 作为服务注册中心 -->
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
