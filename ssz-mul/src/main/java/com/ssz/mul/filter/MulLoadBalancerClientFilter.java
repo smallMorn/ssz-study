@@ -5,7 +5,6 @@ import com.ssz.mul.ribbon.ThreadLocalParam;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.loadbalancer.*;
-import org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerProperties;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.cloud.gateway.support.DelegatingServiceInstance;
@@ -20,16 +19,11 @@ import java.net.URI;
 @Slf4j
 public class MulLoadBalancerClientFilter implements GlobalFilter, Ordered {
 
-    private final LoadBalancerProperties properties;
-
     private final LoadBalancerClient loadBalancer;
 
     protected final HeaderThreadLocal<ThreadLocalParam> headerThreadLocal;
 
-    public MulLoadBalancerClientFilter(LoadBalancerProperties properties
-            , LoadBalancerClient loadBalancer
-            , HeaderThreadLocal<ThreadLocalParam> headerThreadLocal) {
-        this.properties = properties;
+    public MulLoadBalancerClientFilter(LoadBalancerClient loadBalancer, HeaderThreadLocal<ThreadLocalParam> headerThreadLocal) {
         this.loadBalancer = loadBalancer;
         this.headerThreadLocal = headerThreadLocal;
     }
