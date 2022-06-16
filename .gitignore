@@ -1,5 +1,7 @@
 /ssz-api/target/
 /ssz-api/ssz-api.iml
+/ssz-dependencies/ssz-dependencies.iml
+/ssz-dependencies/ssz-mul/ssz-mul.iml
 /ssz-dependencies/ssz-common/target
 /ssz-dependencies/ssz-common/ssz-common.iml
 /ssz-dependencies/ssz-model/target

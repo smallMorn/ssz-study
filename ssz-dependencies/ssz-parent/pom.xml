@@ -20,7 +20,6 @@
         <module>../../ssz-api</module>
         <module>../../ssz-service-product</module>
         <module>../../ssz-service-user</module>
-        <module>../../ssz-gateway/ssz-gateway</module>
     </modules>
 
     <dependencies>
