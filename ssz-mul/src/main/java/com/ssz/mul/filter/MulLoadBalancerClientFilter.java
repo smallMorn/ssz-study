@@ -5,7 +5,7 @@ import com.ssz.mul.ribbon.ThreadLocalParam;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.loadbalancer.*;
-import org.springframework.cloud.gateway.config.LoadBalancerProperties;
+import org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerProperties;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.cloud.gateway.support.DelegatingServiceInstance;
@@ -50,7 +50,7 @@ public class MulLoadBalancerClientFilter implements GlobalFilter, Ordered {
         }
         return this.choose(exchange).doOnNext((response) -> {
             if (!response.hasServer()) {
-                throw NotFoundException.create(this.properties.isUse404(), "Unable to find instance for " + url.getHost());
+                throw NotFoundException.create(true, "Unable to find instance for " + url.getHost());
             } else {
                 URI uri = exchange.getRequest().getURI();
                 String overrideScheme = null;

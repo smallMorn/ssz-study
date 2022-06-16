@@ -12,7 +12,7 @@
     <!--这里声明groupId的意义在于，声明的依赖想自定义groupId而不是用父级的groupId-->
     <groupId>com.ssz</groupId>
     <artifactId>ssz-mul</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.0-SNAPSHOT</version>
     <name>ssz-mul</name>
     <description>mul自定义标签路由项目</description>
 
@@ -27,7 +27,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.4</version>
+            <version>1.18.24</version>
         </dependency>
 
         <dependency>
