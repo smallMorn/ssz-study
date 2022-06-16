@@ -1,7 +1,7 @@
-package com.ssz.gateway.filter;
+package com.ssz.mul.filter;
 
-import com.ssz.common.web.ribbon.HeaderThreadLocal;
-import com.ssz.common.web.ribbon.ThreadLocalParam;
+import com.ssz.mul.ribbon.HeaderThreadLocal;
+import com.ssz.mul.ribbon.ThreadLocalParam;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.loadbalancer.*;
@@ -16,8 +16,6 @@ import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
 import java.net.URI;
-
-import static org.springframework.cloud.gateway.support.ServerWebExchangeUtils.*;
 
 @Slf4j
 public class MulLoadBalancerClientFilter implements GlobalFilter, Ordered {
@@ -39,13 +37,13 @@ public class MulLoadBalancerClientFilter implements GlobalFilter, Ordered {
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
-        URI url = exchange.getAttribute(GATEWAY_REQUEST_URL_ATTR);
-        String schemePrefix = exchange.getAttribute(GATEWAY_SCHEME_PREFIX_ATTR);
+        URI url = exchange.getAttribute(ServerWebExchangeUtils.GATEWAY_REQUEST_URL_ATTR);
+        String schemePrefix = exchange.getAttribute(ServerWebExchangeUtils.GATEWAY_SCHEME_PREFIX_ATTR);
         if (url == null || (!"lb".equals(url.getScheme()) && !"lb".equals(schemePrefix))) {
             return chain.filter(exchange);
         }
         // preserve the original url
-        addOriginalRequestUrl(exchange, url);
+        ServerWebExchangeUtils.addOriginalRequestUrl(exchange, url);
         exchange.getResponse();
         if (log.isTraceEnabled()) {
             log.trace("LoadBalancerClientFilter url before: " + url);

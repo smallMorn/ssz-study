@@ -20,6 +20,7 @@
         <option value="$PROJECT_DIR$/ssz-api/ssz-gateway/pom.xml" />
         <option value="$PROJECT_DIR$/ssz-gateway/ssz-gateway/pom.xml" />
         <option value="$PROJECT_DIR$/ssz-dependencies/ssz-mul/pom.xml" />
+        <option value="$PROJECT_DIR$/ssz-mul/pom.xml" />
       </list>
     </option>
   </component>
