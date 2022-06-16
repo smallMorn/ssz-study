@@ -13,7 +13,7 @@
     <groupId>com.ssz</groupId>
     <artifactId>ssz-mul</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>ssz-mul</name>
+    <name>ssz Mul</name>
     <description>mul自定义标签路由项目</description>
 
     <dependencies>
