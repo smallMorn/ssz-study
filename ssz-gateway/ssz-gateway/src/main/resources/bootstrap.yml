@@ -1,6 +1,8 @@
 spring:
   application:
     name: ssz-gateway
+  profiles:
+    active: dev
   main:
     allow-bean-definition-overriding: true
   cloud:
@@ -9,9 +11,9 @@ spring:
         locator:
           enabled: true
       routes:
-        - id: api
+        - id: ssz-api
           #lb:uri 的协议，表示开启 Spring Cloud Gateway 的负载均衡功能
-          uri: lb://api
+          uri: lb://ssz-api
           predicates:
             - Path=/api/**
     nacos:
