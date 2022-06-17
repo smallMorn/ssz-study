@@ -1,5 +1,8 @@
 package com.ssz.gateway.filter;
 
+import com.alibaba.fastjson.JSONObject;
+import com.ssz.common.web.enumerate.ApiCode;
+import com.ssz.common.web.result.ResultInfo;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -7,15 +10,18 @@ import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.core.Ordered;
+import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.http.server.reactive.ServerHttpResponse;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.server.ServerWebExchange;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Objects;
 
@@ -41,17 +47,19 @@ public class GatewayFilter implements GlobalFilter, Ordered {
         }
         HttpHeaders headers = request.getHeaders();
         List<String> tokens = headers.get(token);
-        if (!CollectionUtils.isEmpty(tokens)){
+        if (!CollectionUtils.isEmpty(tokens)) {
             String token = tokens.get(0);
-            if (!Objects.equals(token, "12345")) {
-                response.setStatusCode(HttpStatus.METHOD_NOT_ALLOWED);
-                return response.setComplete();
-            }else {
+            if (Objects.equals(token, "12345")) {
                 return chain.filter(exchange);
             }
         }
-        response.setStatusCode(HttpStatus.METHOD_NOT_ALLOWED);
-        return response.setComplete();
+        return authError(response, ApiCode.TOKEN_ERROR);
+    }
+
+    private Mono<Void> authError(ServerHttpResponse resp, ApiCode apiCode) {
+        resp.getHeaders().add("Content-Type", MediaType.APPLICATION_JSON_UTF8_VALUE);
+        DataBuffer buffer = resp.bufferFactory().wrap(JSONObject.toJSONString(ResultInfo.fail(apiCode)).getBytes(StandardCharsets.UTF_8));
+        return resp.writeWith(Flux.just(buffer));
     }
 
     @Override
