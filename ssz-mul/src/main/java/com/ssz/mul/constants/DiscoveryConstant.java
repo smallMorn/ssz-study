@@ -8,4 +8,10 @@ public interface DiscoveryConstant {
      * 默认标签字段命名
      */
     String ROUTE_FIELD_NAME = "route";
+
+
+    /**
+     * 是否生效
+     */
+    String ENABLED = "enabled";
 }
