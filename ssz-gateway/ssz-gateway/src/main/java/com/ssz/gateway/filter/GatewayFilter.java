@@ -44,11 +44,14 @@ public class GatewayFilter implements GlobalFilter, Ordered {
         if (!CollectionUtils.isEmpty(tokens)){
             String token = tokens.get(0);
             if (!Objects.equals(token, "12345")) {
-                response.setStatusCode(HttpStatus.NOT_ACCEPTABLE);
+                response.setStatusCode(HttpStatus.METHOD_NOT_ALLOWED);
                 return response.setComplete();
+            }else {
+                return chain.filter(exchange);
             }
         }
-        return chain.filter(exchange);
+        response.setStatusCode(HttpStatus.METHOD_NOT_ALLOWED);
+        return response.setComplete();
     }
 
     @Override
