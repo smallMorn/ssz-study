@@ -1,6 +1,5 @@
 package com.ssz.common.web.result;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.ssz.common.web.enumerate.ApiCode;
 
 import java.io.Serializable;
@@ -16,7 +15,6 @@ public class ResultInfo implements Serializable {
     // 消息
     private String message;
     // 数据对象
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Object result;
 
     //带结果的成功返回体
