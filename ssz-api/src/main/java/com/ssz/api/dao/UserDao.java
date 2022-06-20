@@ -22,5 +22,5 @@ public interface UserDao {
     ResultInfo cacheList();
 
     @GetMapping(value = "/user/selectById/{id}")
-    ResultInfo selectById(@PathVariable Long id);
+    ResultInfo selectById(@PathVariable("id") Long id);
 }
