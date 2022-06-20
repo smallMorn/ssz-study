@@ -4,7 +4,6 @@ import com.alibaba.cloud.nacos.NacosDiscoveryProperties;
 import com.ssz.mul.constants.DiscoveryConstant;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.PostConstruct;
@@ -12,7 +11,6 @@ import javax.annotation.Resource;
 
 @ConfigurationProperties(DiscoveryConstant.DISCOVERY_PREFIX)
 @Data
-@Component
 public class DiscoveryProperties {
 
     /**
