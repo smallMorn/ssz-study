@@ -1,6 +1,8 @@
 spring:
   application:
     name: ssz-api
+  profiles:
+    active: dev
   main:
     allow-bean-definition-overriding: true
   cloud:
