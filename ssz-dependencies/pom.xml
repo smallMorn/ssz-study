@@ -44,7 +44,7 @@
         <mysql.version>8.0.18</mysql.version>
 
         <slf4j.version>1.7.26</slf4j.version>
-        <alibaba.cloud.version>2.2.3.RELEASE</alibaba.cloud.version>
+        <alibaba.cloud.version>2.2.5.RELEASE</alibaba.cloud.version>
         <springfox.version>2.9.2</springfox.version>
     </properties>
 
