@@ -2,8 +2,7 @@ package com.ssz.service.product.controller;
 
 
 import com.ssz.common.model.dto.ProductDTO;
-import com.ssz.common.web.result.ResultInfo;
-import com.ssz.service.product.entity.Product;
+import com.ssz.common.model.result.ResultInfo;
 import com.ssz.service.product.service.IProductService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;

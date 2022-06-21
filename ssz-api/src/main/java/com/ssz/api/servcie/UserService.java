@@ -2,7 +2,7 @@ package com.ssz.api.servcie;
 
 import com.ssz.common.model.dto.UserDTO;
 import com.ssz.common.model.dto.UserQueryDTO;
-import com.ssz.common.web.result.ResultInfo;
+import com.ssz.common.model.result.ResultInfo;
 
 public interface UserService {
 

@@ -6,7 +6,7 @@ import com.ssz.common.model.dto.ProductDTO;
 import com.ssz.common.model.dto.UserDTO;
 import com.ssz.api.dao.UserDao;
 import com.ssz.common.model.dto.UserQueryDTO;
-import com.ssz.common.web.result.ResultInfo;
+import com.ssz.common.model.result.ResultInfo;
 import com.ssz.common.web.util.StringUtils;
 import io.seata.spring.annotation.GlobalTransactional;
 import lombok.AllArgsConstructor;

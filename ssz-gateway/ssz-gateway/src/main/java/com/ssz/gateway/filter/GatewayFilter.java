@@ -1,8 +1,8 @@
 package com.ssz.gateway.filter;
 
 import com.alibaba.fastjson.JSONObject;
-import com.ssz.common.web.enumerate.ApiCode;
-import com.ssz.common.web.result.ResultInfo;
+import com.ssz.common.model.enums.ApiCode;
+import com.ssz.common.model.result.ResultInfo;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.context.properties.ConfigurationProperties;

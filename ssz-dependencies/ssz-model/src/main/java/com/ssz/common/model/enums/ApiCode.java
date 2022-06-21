@@ -1,4 +1,4 @@
-package com.ssz.common.web.enumerate;
+package com.ssz.common.model.enums;
 
 /**
  * @Date 2021/1/11 17:43

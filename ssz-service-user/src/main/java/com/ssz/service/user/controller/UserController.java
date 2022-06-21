@@ -3,7 +3,7 @@ package com.ssz.service.user.controller;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.ssz.common.model.dto.UserDTO;
 import com.ssz.common.model.dto.UserQueryDTO;
-import com.ssz.common.web.result.ResultInfo;
+import com.ssz.common.model.result.ResultInfo;
 import com.ssz.service.user.cache.UserCache;
 import com.ssz.service.user.entity.User;
 import com.ssz.service.user.service.IUserService;

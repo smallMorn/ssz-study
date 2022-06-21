@@ -1,6 +1,8 @@
-package com.ssz.common.web.result;
+package com.ssz.common.model.result;
 
-import com.ssz.common.web.enumerate.ApiCode;
+
+
+import com.ssz.common.model.enums.ApiCode;
 
 import java.io.Serializable;
 
