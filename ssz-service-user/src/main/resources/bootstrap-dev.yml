@@ -7,7 +7,6 @@ spring:
     password: ssz1314..
 seata:
   enabled: true
-  application-id: ssz-service-user
   tx-service-group: my_tx_group
   config:
     type: nacos
@@ -52,3 +51,26 @@ redis:
   max-idle: 100
   min-idle: 50
   database: 11
+
+
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        username: "nacos"
+        password: "nacos"
+      config:
+        server-addr: 127.0.0.1:8848
+        username: "nacos"
+        password: "nacos"
+        file-extension: yml
+        extension-configs:
+          - data-id: ssz-redis.yml
+            refresh: true
+          - data-id: ssz-seata.yml
+            refresh: true
+          - data-id: ssz-db-user.yml
+            refresh: true
+          - data-id: ssz-mybatis-plus.yml
+            refresh: true

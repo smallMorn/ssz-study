@@ -1,33 +1,17 @@
-seata:
-  enabled: true
-  application-id: ssz-api
-  tx-service-group: my_tx_group
-  config:
-    type: nacos
+spring:
+  cloud:
     nacos:
-      namespace:
-      serverAddr: 127.0.0.1:8848
-      group: SEATA_GROUP
-      username: nacos
-      password: nacos
-  registry:
-    type: nacos
-    nacos:
-      application: seata-server
-      server-addr: 127.0.0.1:8848
-      group: SEATA_GROUP
-      namespace:
-      username: nacos
-      password: nacos
-  service:
-    vgroup-mapping:
-      my_tx_group: default
-
-redis:
-  host: 127.0.0.1
-  port: 6379
-  password: 123456
-  max-total: 5000
-  max-idle: 100
-  min-idle: 50
-  database: 11
+      discovery:
+        server-addr: 127.0.0.1:8848
+        username: "nacos"
+        password: "nacos"
+      config:
+        server-addr: 127.0.0.1:8848
+        username: "nacos"
+        password: "nacos"
+        file-extension: yml
+        extension-configs:
+          - dataId: ssz-redis.yml
+            refresh: true
+          - dataId: ssz-seata.yml
+            refresh: true
