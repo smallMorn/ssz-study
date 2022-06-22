@@ -4,6 +4,8 @@ import com.netflix.client.config.IClientConfig;
 import com.netflix.loadbalancer.ILoadBalancer;
 import com.netflix.loadbalancer.IRule;
 import com.netflix.loadbalancer.Server;
+import com.ssz.mul.loadbalancer.InsTemplate;
+import com.ssz.mul.loadbalancer.InstancePreprocessor;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -11,6 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 public class MulLoadBalancer implements ILoadBalancer {
+    private final InsTemplate<Server> instanceOwner;
 
     private final IClientConfig iClientConfig;
 
@@ -18,11 +21,16 @@ public class MulLoadBalancer implements ILoadBalancer {
 
     private final HeaderThreadLocal headerThreadLocal;
 
+    private final InstancePreprocessor instancePreprocessor;
 
-    public MulLoadBalancer(IClientConfig iClientConfig, IRule rule, HeaderThreadLocal headerThreadLocal) {
+
+
+    public MulLoadBalancer(IClientConfig iClientConfig, IRule rule, HeaderThreadLocal headerThreadLocal, InstancePreprocessor instancePreprocessor, InsTemplate<Server> instanceOwner) {
         this.iClientConfig = iClientConfig;
         this.rule = rule;
         this.headerThreadLocal = headerThreadLocal;
+        this.instancePreprocessor = instancePreprocessor;
+        this.instanceOwner = instanceOwner;
     }
 
     @Override
@@ -51,7 +59,7 @@ public class MulLoadBalancer implements ILoadBalancer {
         if (headers == null) {
             headers = new HashMap<>(1);
         }
-        return null;
+        return instancePreprocessor.process(headers, instanceOwner, iClientConfig.getClientName());
     }
 
     @Override

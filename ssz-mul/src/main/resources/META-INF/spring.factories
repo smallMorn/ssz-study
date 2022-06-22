@@ -1,2 +1,4 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.ssz.mul.config.DiscoveryConfiguration
+    com.ssz.mul.config.DiscoveryConfiguration,\
+    com.ssz.mul.config.LoadBalancerConfiguration,\
+    com.ssz.mul.config.RibbonMulAutoConfiguration
