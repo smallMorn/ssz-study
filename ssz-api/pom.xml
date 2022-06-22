@@ -15,6 +15,10 @@
 	<name>ssz Api</name>
 
 	<dependencies>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
+		</dependency>
 		<!--feign-->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
@@ -44,6 +48,16 @@
 			<groupId>com.ssz</groupId>
 			<artifactId>ssz-common</artifactId>
 			<version>1.0-SNAPSHOT</version>
+		</dependency>
+		<!--nacos做注册中心-->
+		<dependency>
+			<groupId>com.alibaba.cloud</groupId>
+			<artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+		</dependency>
+		<!--nacos做配置中心-->
+		<dependency>
+			<groupId>com.alibaba.cloud</groupId>
+			<artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
 		</dependency>
 	</dependencies>
 
