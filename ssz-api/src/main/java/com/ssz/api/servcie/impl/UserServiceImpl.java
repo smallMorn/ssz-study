@@ -25,15 +25,11 @@ public class UserServiceImpl implements UserService {
     @Override
     @GlobalTransactional
     public Boolean insert(UserDTO dto) {
-        long time = System.currentTimeMillis();
         userDao.insert(dto);
-        log.info("用户插入耗时:{}", System.currentTimeMillis() - time);
         ProductDTO productDTO = new ProductDTO();
         BeanUtils.copyProperties(dto, productDTO);
         productDTO.setProductId(StringUtils.generateProductCode());
-        long timeMillis = System.currentTimeMillis();
         productDao.insertProduct(productDTO);
-        log.info("产品插入耗时:{}", System.currentTimeMillis() - timeMillis);
         return true;
     }
 
