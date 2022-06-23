@@ -14,7 +14,7 @@ public interface InsTemplate<T> {
     List<T> getInstances(String serviceId);
 
     /**
-     * 根据分组+服务名查找服务实例集合（如果你没有设置过route相关元素，那么此api就是你想要的）
+     * 根据注册中心 + 分组 + 服务名查找服务实例集合(不带route的)
      *
      * @param registerId 注册中心id
      * @param serviceId  服务id
@@ -33,7 +33,7 @@ public interface InsTemplate<T> {
     List<T> getInstancesByRoute(String serviceId, String route);
 
     /**
-     * 根据分组 + 服务名 + route 查找服务实例集合
+     * 根据注册中心 + 分组 + 服务名 + route 查找服务实例集合(带route的)
      *
      * @param registerId 注册中心id
      * @param serviceId  服务id
