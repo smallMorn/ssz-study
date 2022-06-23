@@ -2,7 +2,7 @@ package com.ssz.mul.constants;
 
 public interface MulConstant {
 
-    String DISCOVERY_PREFIX = "ssz.discovery";
+    String DISCOVERY_PREFIX = "mul.discovery";
 
     /**
      * 默认标签字段命名
@@ -22,6 +22,9 @@ public interface MulConstant {
 
     String LOADBALANCER_PREFIX = "mul.loadbalancer";
 
+    /**
+     * 默认标签路由名称
+     */
     String DEFAULT_ROUTE = "default";
 
     /**

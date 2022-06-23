@@ -25,6 +25,7 @@ public class DiscoveryProperties {
      * route属性的名称
      */
     public String routeFieldName;
+
     /**
      * 需要监听的注册中心
      */
@@ -50,6 +51,9 @@ public class DiscoveryProperties {
         }
     }
 
+    /**
+     * 服务所属的分组
+     */
     public String getGroup() {
         return nacosDiscoveryProperties.getGroup();
     }
