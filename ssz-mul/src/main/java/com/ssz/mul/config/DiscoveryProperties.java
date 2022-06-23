@@ -31,6 +31,16 @@ public class DiscoveryProperties {
      */
     private List<NacosRegister> register = new ArrayList<>();
 
+    /**
+     * 拉取实例空次数，阈值达到后自动关闭定时拉取任务
+     */
+    private Integer pullEmptyCount;
+
+    /**
+     * 实例拉取间隔 默认5s
+     */
+    private Integer pullInterval;
+
     @Resource
     private NacosDiscoveryProperties nacosDiscoveryProperties;
 
