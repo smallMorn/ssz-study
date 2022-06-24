@@ -26,7 +26,7 @@ public class MulRibbonClientConfiguration {
     private PropertiesFactory propertiesFactory;
 
     @Bean
-    @ConditionalOnMissingBean
+    @ConditionalOnMissingBean(ILoadBalancer.class)
     public ILoadBalancer mulLoadBalancer(IClientConfig config, IRule rule,
                                          InsTemplate<Server> template,
                                          InstancePreprocessor preprocessor,

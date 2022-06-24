@@ -18,6 +18,8 @@ spring:
             - Path=/api/**
 server:
   port: 1004
+  servlet:
+    context-path: /gateway
 
 
 
