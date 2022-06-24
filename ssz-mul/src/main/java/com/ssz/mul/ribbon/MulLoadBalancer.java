@@ -6,6 +6,7 @@ import com.netflix.loadbalancer.IRule;
 import com.netflix.loadbalancer.Server;
 import com.ssz.mul.loadbalancer.InsTemplate;
 import com.ssz.mul.loadbalancer.InstancePreprocessor;
+import com.ssz.mul.ribbon.rule.MulRoundRobinRule;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -24,10 +25,12 @@ public class MulLoadBalancer implements ILoadBalancer {
     private final InstancePreprocessor instancePreprocessor;
 
 
-
     public MulLoadBalancer(IClientConfig iClientConfig, IRule rule, HeaderThreadLocal headerThreadLocal, InstancePreprocessor instancePreprocessor, InsTemplate<Server> instanceOwner) {
         this.iClientConfig = iClientConfig;
-        this.rule = rule;
+        this.rule = rule == null ? new MulRoundRobinRule() : rule;
+        if (this.rule.getLoadBalancer() == null) {
+            this.rule.setLoadBalancer(this);
+        }
         this.headerThreadLocal = headerThreadLocal;
         this.instancePreprocessor = instancePreprocessor;
         this.instanceOwner = instanceOwner;
@@ -55,7 +58,7 @@ public class MulLoadBalancer implements ILoadBalancer {
 
     @Override
     public List<Server> getReachableServers() {
-        Map<String, Collection<String>> headers =  headerThreadLocal.getHeaders();
+        Map<String, Collection<String>> headers = headerThreadLocal.getHeaders();
         if (headers == null) {
             headers = new HashMap<>(1);
         }
