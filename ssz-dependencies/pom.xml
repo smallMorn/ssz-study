@@ -22,7 +22,7 @@
         <module>ssz-model</module>
         <module>ssz-common</module>
         <module>ssz-parent</module>
-        <module>../ssz-gateway/ssz-gateway</module>
+        <module>../ssz-gateway</module>
         <module>../ssz-api</module>
     </modules>
     <properties>
