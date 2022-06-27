@@ -64,7 +64,7 @@ public class GatewayFilter implements GlobalFilter, Ordered {
 
     @Override
     public int getOrder() {
-        //过滤器的顺序，0 表示第一个
+        //过滤器的顺序，数字越小，执行优先级越高
         return 0;
     }
 }
