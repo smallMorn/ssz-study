@@ -38,18 +38,16 @@ public class MulInstancePreprocessor implements InstancePreprocessor {
     }
 
     @Override
-    public List<Server> process(Map<String, Collection<String>> headers, InsTemplate<Server> cacheIns, String serviceId) {
-        String routeTag = route.value(headers);
-        List<Server> ins = cacheIns.getInstancesByRoute(registerId.value(headers),
-                group.value(headers), serviceId, routeTag);
+    public List<Server> process(Map<String, Object> map, InsTemplate<Server> cacheIns, String serviceId) {
+        String routeTag = route.get(map);
+        String rId = registerId.get(map);
+        String g = group.get(map);
+        List<Server> ins = cacheIns.getInstancesByRoute(rId, g, serviceId, routeTag);
         //route降级
         if (CollectionUtils.isEmpty(ins) && lbProperties.isDemotion() && !lbProperties.getDefaultAccessRoute().equals(routeTag)) {
-            ins = cacheIns.getInstancesByRoute(registerId.value(headers), group.value(headers),
-                    serviceId, lbProperties.getDefaultAccessRoute());
-        }
-        for (InsFilter insFilter : insFilters) {
-            ins = insFilter.process(headers, ins);
+            ins = cacheIns.getInstancesByRoute(rId, g, serviceId, lbProperties.getDefaultAccessRoute());
         }
         return ins;
     }
+
 }

@@ -38,4 +38,9 @@ public interface MulConstant {
      */
     int DEFAULT_PULL_INTERVAL = 5;
 
+    String HINT = "unrealized";
+
+
+    String ROUTE_KEY = "mul.route";
+
 }

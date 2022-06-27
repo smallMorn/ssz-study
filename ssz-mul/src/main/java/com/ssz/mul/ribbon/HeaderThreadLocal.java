@@ -1,27 +1,18 @@
 package com.ssz.mul.ribbon;
 
-import java.util.Collection;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class HeaderThreadLocal<T> {
 
-    private final ThreadLocal<T> local = new ThreadLocal<>();
+    private final ThreadLocal<Map<String, Object>> local = ThreadLocal.withInitial(ConcurrentHashMap::new);
 
-    /**
-     * 子类处理后返回集合
-     *
-     * @return 一般是header
-     */
-    public Map<String, Collection<String>> getHeaders() {
-        throw new UnsupportedOperationException();
-    }
-
-    public T getLocal() {
+    public Map<String, Object> getLocal() {
         return local.get();
     }
 
-    public void setLocal(T obj) {
-        this.local.set(obj);
+    public void setLocal(String key, Object value) {
+        this.local.get().put(key, value);
     }
 
     public void removeLocal() {

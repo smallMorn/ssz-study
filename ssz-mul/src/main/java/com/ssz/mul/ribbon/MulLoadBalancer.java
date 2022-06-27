@@ -58,11 +58,7 @@ public class MulLoadBalancer implements ILoadBalancer {
 
     @Override
     public List<Server> getReachableServers() {
-        Map<String, Collection<String>> headers = headerThreadLocal.getHeaders();
-        if (headers == null) {
-            headers = new HashMap<>(1);
-        }
-        return instancePreprocessor.process(headers, instanceOwner, iClientConfig.getClientName());
+        return instancePreprocessor.process(headerThreadLocal.getLocal(), instanceOwner, iClientConfig.getClientName());
     }
 
     @Override

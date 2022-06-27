@@ -16,5 +16,5 @@ public interface InstancePreprocessor {
      * @param serviceId 请求serviceId
      * @return 选定你所需要的实例集合
      */
-    List<Server> process(Map<String, Collection<String>> headers, InsTemplate<Server> cacheIns, String serviceId);
+    List<Server> process(Map<String, Object> headers, InsTemplate<Server> cacheIns, String serviceId);
 }
