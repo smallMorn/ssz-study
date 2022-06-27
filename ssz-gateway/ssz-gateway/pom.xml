@@ -41,20 +41,6 @@
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-            <exclusions>
-                <exclusion>
-                    <artifactId>jsr305</artifactId>
-                    <groupId>com.google.code.findbugs</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>archaius-core</artifactId>
-                    <groupId>com.netflix.archaius</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>servo-core</artifactId>
-                    <groupId>com.netflix.servo</groupId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <!-- nacos 作为配置中心 -->
         <dependency>
@@ -65,6 +51,14 @@
             <groupId>com.ssz</groupId>
             <artifactId>ssz-model</artifactId>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.github.xiaoymin/knife4j-spring-boot-starter -->
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>knife4j-spring-boot-starter</artifactId>
+            <version>3.0.3</version>
+        </dependency>
+
     </dependencies>
 
     <build>
